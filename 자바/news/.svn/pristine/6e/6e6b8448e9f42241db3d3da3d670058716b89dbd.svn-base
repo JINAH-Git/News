@@ -1,0 +1,251 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>     
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>메인 페이지</title>
+		<link rel="stylesheet" type="text/css" href="/news/style/head.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<!-- 글씨 스타일 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+		<!-- 상위 카테고리 글씨 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<script src="/news/js/jquery-3.7.0.js"></script>
+		<!-- 워드클라우드를 위한 jqcloud -->
+		<script src="https://golangkorea.github.io/js/jqcloud/jqcloud.min.js"></script>
+		<link rel="stylesheet" href="https://golangkorea.github.io/js/jqcloud/jqcloud.min.css">
+	</head>
+	<style>
+		#loading 
+		{
+			height: 150vw;
+		}
+		#loading-image
+		{
+		    margin-top: 300px;
+		    height: 300px;
+		    width: 300px;
+		}
+		.paging-div
+		{
+		  padding: 15px 0 5px 10px;
+		  display: table;
+		  margin-left: auto;
+		  margin-right: auto;
+		  text-align: center;
+		}
+	</style>
+	<script> 
+        //팝업 Open 기능
+        function open_pop(flag) {
+             $('#myModal' + flag).show();
+             $.ajax({
+                type:"get",
+                url:"wordcloud.jsp",
+                dataType:"json",
+                data:
+                {
+                	no: flag,
+                	code: "2"
+                },
+                success: function(data){
+                   $("#wordcloud" + flag).jQCloud(data);	                        
+                },
+                error:function(){
+                	alert("에러");       
+                }
+			})
+        };
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal' + flag).hide();
+        };
+        //검색 창 클릭 시 기능
+        $(function(){
+        	$("#top_search").click(function(){
+        		if($("#site_search").css("display") == "none")
+        		{
+        			$("#site_search").show();
+        			$("#search_kyword").focus();
+        		}
+        		else if($("#site_search").css("display")!= "None")
+       			{
+        			$("#site_search").hide();
+       			}
+        	});
+        	// 검색 창 외에 다른 구간 선택시 검색 창 없애기
+            $("#content_wrap").click(function(){
+            	if($("#site_search").css("display") != "none")
+           		{
+            		$("#site_search").hide();
+           		}
+            });        
+        });
+       	$(function(){
+	        //검색어 버튼 누르면 검색 넘어가기 
+	      	$(".search_btn").click(function()
+   			{
+	        	$("#search_frm").submit();
+        	});
+	        //상위메뉴에 마우스를 갖다대면 하위 메뉴 보이게 하기
+	        $('.section1').mouseenter(function(){ $('.subsection1').slideDown(100); })
+	        $('.section2').mouseenter(function(){ $('.subsection2').slideDown(100); })
+	        $('.section3').mouseenter(function(){ $('.subsection3').slideDown(100); })
+	        $('.section4').mouseenter(function(){ $('.subsection4').slideDown(100); })
+	        $('.section5').mouseenter(function(){ $('.subsection5').slideDown(100); })
+	        $('.section6').mouseenter(function(){ $('.subsection6').slideDown(100); })
+			//하위메뉴에 마우스를 옮겨도 하위 메뉴 보이게 하기
+			$('.subsection1').mouseenter(function(){ $('.subsection1').show(); })
+	        $('.subsection2').mouseenter(function(){ $('.subsection2').show(); })
+	        $('.subsection3').mouseenter(function(){ $('.subsection3').show(); })
+	        $('.subsection4').mouseenter(function(){ $('.subsection4').show(); })
+	        $('.subsection5').mouseenter(function(){ $('.subsection5').show(); })
+	        $('.subsection6').mouseenter(function(){ $('.subsection6').show(); })
+	        //상위메뉴에서 마우스가 밖으로 나가면 하위 메뉴 숨기기
+	        $('.section1').mouseleave(function(){ $('.subsection1').hide(); })
+	        $('.section2').mouseleave(function(){ $('.subsection2').hide(); })
+	        $('.section3').mouseleave(function(){ $('.subsection3').hide(); })
+	        $('.section4').mouseleave(function(){ $('.subsection4').hide(); })
+	        $('.section5').mouseleave(function(){ $('.subsection5').hide(); })
+	        $('.section6').mouseleave(function(){ $('.subsection6').hide(); })
+	        //하위메뉴에서 마우스가 밖으로 나가면 하위메뉴 숨기기
+	        $('.subsection1').mouseleave(function(){ $('.subsection1').hide(); })
+	        $('.subsection2').mouseleave(function(){ $('.subsection2').hide(); })
+	        $('.subsection3').mouseleave(function(){ $('.subsection3').hide(); })
+	        $('.subsection4').mouseleave(function(){ $('.subsection4').hide(); })
+	        $('.subsection5').mouseleave(function(){ $('.subsection5').hide(); })
+	        $('.subsection6').mouseleave(function(){ $('.subsection6').hide(); })
+   		});
+        //로딩중 화면에 표시
+        window.onbeforeunload = function() { $('#loading').show(); };  //현재 페이지에서 다른 페이지로 넘어갈 때 표시해주는 기능
+        window.onload = function()  //페이지가 로드 되면 로딩 화면을 없애주는 것
+        { 
+        	$('#loading').hide();
+        	$('#loading').remove();
+        };
+    </script>
+    <body>
+	<!-- head 시작 -->	
+	<div id="head">
+		<div class="header_inner">
+			<!-- 로고 시작 -->
+			<div class="mainicon"><a href="/news/index.jsp"><b>Newsroom</b></a></div>
+			<!-- 로고 끝 -->
+			<!-- 상위 카테고리 시작 -->
+			<div class="wrap_section">
+				<div class="section1">정치</div>			
+				<div class="section2">경제</div>
+				<div class="section3">사회</div>
+				<div class="section4">생활/문화</div>
+				<div class="section5">세계</div>
+				<div class="section6">IT/과학</div>
+				<div id="top_search">
+					<img src="/news/img/search.png" style="width:22px;height:22px;">
+				</div>
+				<!-- 하위카테고리 시작 -->
+				<div class="subsection1">
+					<span> <a href="/news/sub.jsp">대통령실</a> </span>| 
+					<span> 국회/정당 </span>|
+					<span> 북한 </span>|
+					<span> 행정 </span>|
+					<span> 국방/외교 </span>|
+					<span> 정치일반 </span>
+				</div>
+				<div class="subsection2">
+					<span> 금융  </span>|
+					<span> 증권  </span>|
+					<span> 산업/재계 </span>|
+					<span> 중기/벤처  </span>|
+					<span> 부동산  </span>|
+					<span> 글로벌 경제 </span>|
+					<span> 생활경제 </span>|
+					<span> 경제 일반 </span>
+				</div>
+				<div class="subsection3">
+					<span> 사건사고 </span>|
+					<span> 교육  </span>|
+					<span> 노동 </span>|
+					<span> 언론 </span>|
+					<span> 환경  </span>|
+					<span> 인권/복지  </span>|
+					<span> 식품/의료  </span>|
+					<span> 지역  </span>|
+					<span> 인물  </span>|
+					<span> 사회 일반  </span>
+				</div>
+				<div class="subsection4">
+					<span> 건강정보 </span>|
+					<span> 자동차/시승기 </span>|
+					<span> 도로/교통 </span>|
+					<span> 여행/레저 </span>|
+					<span> 패션/뷰티  </span>|
+					<span> 공연/전시 </span>|
+					<span> 책 </span>|
+					<span> 종교  </span>|
+					<span> 날씨 </span>|
+					<span> 생활문화  </span>|
+					<span> 일반  </span>
+				</div>
+				<div class="subsection5">
+					<span> 아시아/호주  </span>|
+					<span> 미국/중남미  </span>|
+					<span> 유럽  </span>|
+					<span> 중동/아프리카 </span>|
+					<span> 세계 일반  </span>
+				</div>
+				<div class="subsection6">
+					<span> 모바일  </span>|
+					<span> 인터넷/SNS </span>|
+					<span>  통신/뉴미디어 </span>|
+					<span> IT일반 </span>|
+					<span> 보안/해킹  </span>|
+					<span> 컴퓨터 </span>|
+					<span> 게임/리뷰</span>|
+					<span> 과학 일반   </span>
+				</div>
+				<!-- 하위카테고리 끝 -->
+			</div>
+			<!-- 상위 카테고리 끝 -->
+			<!-- 검색 창 틀 시작 -->
+			<div id="site_search">
+				<div class="center">
+					<p>통합검색</p>
+					<form method="post" id="search_frm" action="/news/search.jsp">
+					<div class="search_box">
+						<div class="placeholder_box">
+							<input type="text" title="통합검색" id="search_kyword" name="search_kyword" class="blank_search" placeholder="검색어를 입력해주세요.">
+							<button type="button" class="search_btn"><img src="/news/img/search.png"></img></button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+			<!-- 검색 창 틀 끝 -->
+		</div>
+		<div id="loading">
+        	<img id="loading-image" src="img/Spinner-1s-200px (2).gif" alt="Loading..." />
+	    </div>
+	</div>
+	<!-- head 끝 -->

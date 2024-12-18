@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>     
+<%
+String search = request.getParameter("search");
+String rdtopcat = request.getParameter("topcat");
+if(search == null || rdtopcat == null)
+{
+	%>
+	<script>
+		alert("검색어를 입력해주세요");
+		window.location.href="search.jsp";
+	</script>
+	<%
+}
+
+RefinedataDTO rddto = new RefinedataDTO();
+ArrayList<RefinedataVO> list = rddto.GetSearchList(rdtopcat, search);
+
+
+%>

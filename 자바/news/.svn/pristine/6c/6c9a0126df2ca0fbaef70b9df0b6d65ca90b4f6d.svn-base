@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>네트워크 그래프 시각화</title>
+	</head>
+	<body>
+		<svg width="640" height="430">
+			<g id="link"/>
+			<g id="node"/>
+		</svg>
+		
+	</body>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script>
+	//명사(키워드)
+	let nodes = [
+		  { name:"ye" },
+		  { name:"jun" },
+		  { name:"mi" },
+		  { name:"sung" },
+		]
+	//엣지(연결선)
+	let links = [
+	  {  source:"ye", target:"jun" },
+	  {  source:"jun", target:"mi" },
+	  {  source:"mi", target:"sung" },
+	  {  source:"sung", target:"jun" },
+	]
+
+	
+	d3.forceSimulation(nodes)
+	  .force('charge', d3.forceManyBody().strength(-200))
+	  .force('center', d3.forceCenter(250, 250))
+	  .force('link', d3.forceLink(links).id(d => d.name))
+	  .on("tick", () => {
+	    drawNodes();
+	    drawLines();
+	}).on("end", () => console.log('end'));
+
+
+	const container = d3.select("svg");
+
+	const node = 
+	      container
+	        .select("#node")
+	        .selectAll("g")
+	        .data(nodes)
+	        .join("g")
+	        .each(function(d){
+	          d3.select(this)
+	            .append("circle")
+	            .attr("r", 5)
+	            .style("fill", "red");
+	          d3.select(this)
+	            .append("text")
+	            .text(d => d.name);
+	      })
+
+	  const link = 
+	        container
+	          .select("#link")
+	          .selectAll("line")
+	          .data(links)
+	          .join("line")
+	          .attr("stroke", "black");
+
+	function drawNodes(){
+	  node.attr("transform", d =>"translate("+[d.x, d.y]+")" );
+	}
+
+	function drawLines() {
+	  link
+	    .attr("x1", d => d.source.x)
+	    .attr("y1", d => d.source.y)
+	    .attr("x2", d => d.target.x)
+	    .attr("y2", d => d.target.y)
+
+	}
+	
+
+	</script>
+</html>

@@ -1,0 +1,38 @@
+@charset "EUC-KR";
+
+.searchcnt
+{
+	border: solid 1px red;
+	width: 1200px;
+	height: 800px;
+	margin: auto;
+	margin-bottom: 200px;
+}
+
+.typearea
+{
+	border: solid 1px blue;
+	width: 220px;
+	height: 325px;
+}
+
+.totalline
+{
+	border: solid 1px green;
+	width: 90px;
+	height: 30px;
+	display: inline-block;
+	margin: 10px 0px 10px 60px;
+}
+
+.typelist
+{
+	border:solid 1px blue;
+	font-size:20px;
+	margin: 15px 0px 10px 20px;
+}
+
+#intcolor
+{
+	color:red;
+}

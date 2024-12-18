@@ -1,0 +1,341 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<link rel="stylesheet" type="text/css" href="/news/style/search.css" />
+<%@ include file="./include/head.jsp"%>
+<!-- 내용 -->
+<div class="wrap_cont">
+	<!-- navigation bar -->
+	<div class="navg">
+		<span class="navgtxt"><b>홈 > 검색</b></span>
+	</div>
+	<!-- navigation bar 끝 -->
+	<!-- word cloud -->
+	<!-- word cloud 끝 -->
+	<span class="count"><b> 검색어: 코로나  </b></span>
+	<hr style="width:1200px;margin-bottom:30px;">
+	<!-- 검색 컨텐츠 시작 -->
+	<div class="searchcnt">
+		<!-- 검색 분류 영역 시작 -->
+		<div class="typearea">
+			<span class="totalline">
+				<b style="font-size:22px">통합분류</b>
+			</span>
+			<!-- 분류 목록 시작 -->
+			<div class="typelisttotal">
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						정치<small>(3,454)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						경제<small>(14,389)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						사회<small>(8,345)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						생활/문화<small>(6,492)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						세계<small>(6,207)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						IT/과학<small>(3,535)</small>
+					</span>
+					<input style="width:20px; height:20px; left:15px; position:relative;" type="checkbox">
+				</div>
+			</div>
+			<!-- 분류 목록 종료 -->
+			<!-- 검색 결과 영역 시작 -->
+			<div style="width:950px; height:650px; margin-left:20px; position:relative; left:230px; bottom:330px;">
+				<h2 style="margin-top:0px;">뉴스 검색 결과 <span id="intcolor">39,759</span> 건입니다.</h2>
+				<!-- 검색 결과 뉴스 리스트 영역 시작 -->
+				<table class="searchnewlist" border="0" style="cursor:pointer;" onClick="open_pop();">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="searchnewlist" border="0">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="searchnewlist" border="0">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="searchnewlist" border="0">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<table class="searchnewlist" border="0">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<!-- 검색 결과 뉴스 리스트 영역 끝 -->
+				<!-- Modal 바깥 -->
+				<div id="myModal" class="modal">
+					<!-- Modal 안쪽 -->
+					<div class="modal-content">
+						<!-- 닫기1 버튼 -->
+						<div style="cursor:pointer;" onClick="close_pop();">
+							<img src="/news/img/close.png" style="width:25px;float:right"></img>
+						</div>
+						<!-- 닫기 1버튼 끝 -->
+						<!-- 뉴스 작성 정보 -->
+						<div>
+							<b style="font-size:20pt;">뉴시스<br></b>
+							<p style="font-size:20pt;">화이자 코로나 XBB.1.5 백신 초도물량 404만회분 국내 도입</p>
+							<p> 이연희 기자 | 2023.09.18. 오전 09:10</p>
+						</div>
+						<!-- 뉴스 작성 정보 끝 -->
+						<!-- 사진 -->
+						<div style="text-align:center;"><img src="/news/img/newstest.jpg" style="width:640px;height:430px"></img></div><br>
+						<!-- 뉴스 내용 -->
+						<div>
+							[세종=뉴시스]이연희 기자 = 코로나19 오미크론 XBB.1.5 변이 바이러스에 대응해 개발된 화이자 개량형 백신 초도물량 404만회분이 18일 국내 도입된다.<br>
+							<br>
+							방역 당국은 다음주에 올해 동절기 코로나19 예방접종계획을 발표할 계획이다. <br>
+							<br>
+							질병관리청에 따르면 화이자 XBB.1.5. 대응 백신 404만회분이 이날 오후 3시30분 항공편(KE510)으로 인천국제공항에 도착한다.<br>
+							<br>
+							질병청은 XBB.1.5 변이 대응 백신을 빠르게 도입하기 위해 지난 7월 말 각 제약사의 사전 검토자료를 식품의약품안전처에 제출한 바 있다. <br>
+							<br>
+							유럽의약품안전청(EMA)가 지난달 31일 화이자 백신에 대해 허가한 다음날인 지난 1일 국내 긴급사용승인을 신청했으며 지난 12일 승인을 받았다. <br>
+							<br>
+							화이자 XBB.1.5 변이 대응 백신은 이번 초도물량을 포함해 총 1000만회분이 순차 도입될 예정이다. 질병청이 화이자·모더나사와 연내 들여오기로 계약한 물량은 총 1500만회분 규다. <br>
+							<br>
+							모더나 XBB.1.5 변이 대응 백신도 지난 11일 미국 식품의약국(FDA) 허가 다음날인 지난 12일 국내 긴급사용승인을 신청한 상태다. 승인 시 약 500만회분이 10월부터 순차적으로 국내 도입될 전망이다. <br>
+							<br>
+							질병청은 2023~2024절기 코로나19 예방접종 계획을 다음주 중 발표할 예정이다. 예방접종 세부계획에는 상세 일정과 인플루엔자(독감) 백신과의 동시접종 여부, 접종 가능 의료기관 수 등이 포함될 예정이다.<br>
+							<br>
+							코로나19의 법정 감염병 등급은 4급으로 하향 조정됐지만 올 접종은 12세 이상 전국민 무료로 유지된다. 접종 우선순위는 65세 이상, 면역저하자 등 고위험군이다.<br>
+							<br>
+							<br>
+							◎공감언론 뉴시스 dyhlee@newsis.com	
+						</div>
+						<!-- 뉴스 내용 끝 -->
+						<!-- 워드 클라우드 -->
+						<div class="word_cloud_pop" style="text-align:center;">
+							<b style="font-size:20pt;">워드 클라우드<br></b>
+							<img src="/news/img/wordcloud.png" style="border:1px solid black;width:640px;height:430px;"></img>
+						</div>
+						<!-- 워드 클라우드 끝 -->
+						<!-- 네트워크 그래프 -->
+						<div class="network_pop" style="text-align:center;">
+							<b style="font-size:20pt;">네트워크 그래프<br></b>
+							<img src="/news/img/networkimg.jpg" style="border:1px solid black;width:640px;height:430px;"></img>
+						</div>
+						<!-- 네트워크 그래프 끝-->
+						<!-- 이전 / 이후 기사글이동 -->
+						<br>
+						<div class="modal_footer">
+							<div style="margin:0 auto;">이전 글 | 이전글이 없습니다.</div>
+							<hr style="width:830px;">
+							<div>다음 글 | 조국 "공산전체주의? 용산전체주의…누가 생경한 단어를 알려주고 있는 듯"</div>
+						</div>
+						<!-- 이전 / 이후 기사글이동 끝 -->
+						<!-- 닫기 버튼 2-->
+						<div style="cursor:pointer;width:880px;height:50px" onClick="close_pop();">
+							<input type="button" value="닫기" style="float:right;margin:25px;width:100px;height:50px">
+						</div>
+						<!-- 닫기 버튼 2 끝 -->
+					</div>
+					<!--Modal 안쪽 끝-->
+				</div>
+			    <!--Modal 바깥 끝-->
+			</div>
+			<!-- 검색 결과 영역 끝 -->
+		</div>
+		<!-- 페이징 처리 -->
+		<div class="pagearea">
+			<img src="img/left.png" class="pageleft">
+			<div class="pagenow">1</div>
+			<div class="page">2</div>
+			<div class="page">3</div>
+			<div class="page">4</div>
+			<div class="page">5</div>
+			<img src="img/right.png" class="pageright">
+		</div>
+		<!-- 페이징 처리 끝 -->
+	</div>
+</div>	
+<!-- 검색 컨텐츠 끝 -->
+<%@ include file="./include/tail.jsp"%>

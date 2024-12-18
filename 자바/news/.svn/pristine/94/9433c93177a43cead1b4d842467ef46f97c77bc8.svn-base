@@ -1,0 +1,66 @@
+//명사(키워드)
+let nodes = [
+	  { name:"ye" },
+	  { name:"jun" },
+	  { name:"mi" },
+	  { name:"sung" },
+	]
+//엣지(연결선)
+let links = [
+  {  source:"ye", target:"jun" },
+  {  source:"jun", target:"mi" },
+  {  source:"mi", target:"sung" },
+  {  source:"sung", target:"jun" },
+]
+
+
+d3.forceSimulation(nodes)
+  .force('charge', d3.forceManyBody().strength(-200))
+  .force('center', d3.forceCenter(250, 250))
+  .force('link', d3.forceLink(links).id(d => d.name))
+  .on("tick", () => {
+    drawNodes();
+    drawLines();
+}).on("end", () => console.log('end'));
+
+
+//영역 설정
+const container = d3.select("svg#network");
+
+const node = 
+      container
+        .select("#node")
+        .selectAll("g")
+        .data(nodes)
+        .join("g")
+        .each(function(d){
+          d3.select(this)
+            .append("circle")
+            .attr("r", 5)
+            .style("fill", "purple");
+          d3.select(this)
+            .append("text")
+            .text(d => d.name);
+      })
+
+  const link = 
+        container
+          .select("#link")
+          .selectAll("line")
+          .data(links)
+          .join("line")
+          .attr("stroke", "black");
+
+function drawNodes(){
+  node.attr("transform", d =>"translate("+[d.x, d.y]+")" );
+}
+
+function drawLines() {
+  link
+    .attr("x1", d => d.source.x)
+    .attr("y1", d => d.source.y)
+    .attr("x2", d => d.target.x)
+    .attr("y2", d => d.target.y)
+
+}
+											

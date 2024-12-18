@@ -1,0 +1,204 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>     
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>메인 페이지</title>
+		<link rel="stylesheet" type="text/css" href="/news/style/head.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<!-- 글씨 스타일 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+		<!-- 상위 카테고리 글씨 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap" rel="stylesheet">
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<script src="/news/js/jquery-3.7.0.js"></script>
+	</head>
+	<script> 
+        //팝업 Open 기능
+        function open_pop(flag) {
+             $('#myModal').show();
+        };
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+        //검색 창 클릭 시 기능
+        $(function(){
+        	$("#top_search").click(function(){
+        		if($("#site_search").css("display") == "none")
+        		{
+        			$("#site_search").show();
+        			$("#search_kyword").focus();
+        		}
+        		else if($("#site_search").css("display")!= "None")
+       			{
+        			$("#site_search").hide();
+       			}
+        	});
+        	// 검색 창 외에 다른 구간 선택시 검색 창 없애기
+            $("#content_wrap").click(function(){
+            	if($("#site_search").css("display") != "none")
+           		{
+            		$("#site_search").hide();
+           		}
+            });
+            /**/
+            
+            	if($("#site_search").css("display") != "none")
+           		{
+            		$(".header_inner").click(function(){
+            			alert("test");
+                		$("#site_search").hide();
+            		});
+           		}
+        });
+        //검색어 버튼 누르면 검색 넘어가기 
+       	$(function(){
+	      	$(".search_btn").click(function()
+   			{
+	        	$("#search_frm").submit();
+        	});
+   		});
+        /*
+		//마우스들어왔을때 
+       	$(".section1").mouseenter(function(){
+            $(".subsection1").css({"display":"block"});
+        })
+        //마우스 나갔을때
+        $(".subsection1").mouseleave(function(){
+            $(".subsection1").css({"display":"none"});
+        })
+        */
+    </script>
+    <body>
+	<!-- head 시작 -->	
+	<div id="head">
+		<div class="header_inner">
+			<!-- 로고 시작 -->
+			<div class="mainicon"><a href="/news/index.jsp"><b>Newsroom</b></a></div>
+			<!-- 로고 끝 -->
+			<!-- 상위 카테고리 시작 -->
+			<div class="wrap_section">
+				<div class="section1">정치
+					<div class="subsection1">
+						<span><a href="/news/sub.jsp"> 대통령실</a></span>| 
+						<span> 국회/정당 </span>|
+						<span> 북한 </span>|
+						<span> 행정 </span>|
+						<span> 국방/외교 </span>|
+						<span> 정치일반 </span>
+					</div>
+				</div>
+					
+				<div class="section2">경제</div>
+				<div class="section3">사회</div>
+				<div class="section4">생활/문화</div>
+				<div class="section5">세계</div>
+				<div class="section6">IT/과학</div>
+				<div id="top_search">
+					<img src="/news/img/search.png" style="width:22px;height:22px;">
+				</div>
+				<!-- 하위카테고리 시작 -->
+				<div class="subsection1">
+					<span><a href="/news/sub.jsp"> 대통령실</a></span>| 
+					<span> 국회/정당 </span>|
+					<span> 북한 </span>|
+					<span> 행정 </span>|
+					<span> 국방/외교 </span>|
+					<span> 정치일반 </span>
+				</div>
+				<div class="subsection2">
+					<span>금융 </span>|
+					<span> 증권  </span>|
+					<span> 산업/재계 </span>|
+					<span> 중기/벤처  </span>|
+					<span> 부동산  </span>|
+					<span> 글로벌 경제 </span>|
+					<span> 생활경제 </span>|
+					<span> 경제 일반 </span>
+				</div>
+				<div class="subsection3">
+					<span> 사건사고 </span>|
+					<span> 교육  </span>|
+					<span> 노동 </span>|
+					<span> 언론 </span>|
+					<span> 환경  </span>|
+					<span> 인권/복지  </span>|
+					<span> 식품/의료  </span>|
+					<span> 지역  </span>|
+					<span> 인물  </span>|
+					<span> 사회 일반  </span>
+				</div>
+				<div class="subsection4">
+					<span> 건강정보 </span>|
+					<span> 자동차/시승기 </span>|
+					<span> 도로/교통 </span>|
+					<span> 여행/레저 </span>|
+					<span> 여행/레저 </span>|
+					<span> 패션/뷰티  </span>|
+					<span> 공연/전시 </span>|
+					<span> 책 </span>|
+					<span> 종교  </span>|
+					<span> 날씨 </span>|
+					<span> 생활문화  </span>|
+					<span> 일반  </span>
+				</div>
+				<div class="subsection5">
+					<span> 아시아/호주  </span>|
+					<span> 미국/중남미  </span>|
+					<span> 유럽  </span>|
+					<span> 중동/아프리카 </span>|
+					<span> 세계 일반  </span>
+				</div>
+				<div class="subsection6">
+					<span> 모바일  </span>|
+					<span> 인터넷/SNS </span>|
+					<span>  통신/뉴미디어 </span>|
+					<span> IT일반 </span>|
+					<span> 보안/해킹  </span>|
+					<span> 컴퓨터 </span>|
+					<span> 게임/리뷰</span>|
+					<span> 과학 일반   </span>
+				</div>
+				<!-- 하위카테고리 끝 -->
+			</div>
+			<!-- 상위 카테고리 끝 -->
+			<!-- 검색 창 틀 시작 -->
+			<div id="site_search">
+				<div class="center">
+					<p>통합검색</p>
+					<form method="post" id="search_frm" action="/news/search.jsp">
+					<div class="search_box">
+						<div class="placeholder_box">
+							<input type="text" title="통합검색" id="search_kyword" name="search_kyword" class="blank_search" placeholder="검색어를 입력해주세요.">
+							<button type="button" class="search_btn"><img src="/news/img/search.png"></img></button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+			<!-- 검색 창 틀 끝 -->
+		</div>
+	</div>
+	<!-- head 끝 -->

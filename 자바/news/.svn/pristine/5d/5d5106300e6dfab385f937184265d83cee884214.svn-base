@@ -1,0 +1,585 @@
+@charset "EUC-KR";
+
+/* 컨텐츠 1 시작 */
+.content1
+{
+	width:100%;
+	height:700px;
+	margin-top: 140px;
+}
+/* 뉴스 정보들 시작(오늘의 이슈, 뉴스 리스트들)*/
+.content_news
+{
+	height: 130px;
+	background-color: #F6F6F6;
+	margin: 0 auto;
+	padding: 0;
+}
+/* 오늘의 이슈, 분석 대상 뉴스 */
+.news_info
+{
+	float:left;
+	margin: 0;
+	width:300px;
+	height: 125px;
+	position: relative;
+	left:290px;
+}
+
+/* 오늘의 이슈 */ 
+.news_main_title
+{
+	font-size: 22px;
+	float: left;
+	position: relative;
+	left:0px;
+	color: #062158;
+    font-weight: 400;
+}
+/* 분석 대상 뉴스 건 */
+.news_total
+{
+	width:150px;
+	vertical-align:middle;
+	margin: 8px 10px;
+	position: absolute;
+	top:60px;
+	left: 0px;
+	margin: 0 auto;
+	font-size: 13px;
+}
+/* 클러스터 건수 */
+.today_cluster
+{
+	width:150px;
+	margin: 8px 10px;
+	position: absolute;
+	top:60px;
+	right: 0px;
+	margin: 0 auto;
+	font-size: 13px;
+}
+/* 분석 대상 기준*/
+.news_wdate
+{
+	width:300px;
+	margin: 8px 10px;
+	position: absolute;
+	top:90px;
+	left: 0px;
+	font-size: 13px;
+	margin: 0 auto;
+}
+.content_news ul
+{
+	list-style:none;
+}
+/* 오늘의 이슈 기사 제목들 시작 */
+.news_list
+{
+	width:1300px;
+	height: 130px;
+	vertical-align: middle;
+	position: absolute;
+	left:600px;
+	margin: 0 auto;
+}
+/* 오늘의 뉴스 4개 */
+.news_list_sort li
+{
+	position:relative;
+	font-size:16px;
+	width: 15%;
+	height: 90px;
+    padding: 0 16px;
+    margin: 0 auto;
+}
+
+.news_list_sort li:after 
+{
+    content: '';
+    width: 1px;
+    height: 70px;
+    background-color: #BCBCBC;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+/* 태그 li 클래스 하나씩 */
+.swiper-slide 
+{
+	float:left;
+    flex-shrink: 0;
+    width: 1500px;
+    height: 150px;
+    position: relative;
+    transition-property: transform;
+    padding: 0 10px;
+}
+.news_title
+{
+	font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    color:black;
+    display: -webkit-box; 
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+	width: 200px;
+	height:40px;
+	margin: 5px 5px 0 0;
+}
+.news_count
+{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.news_photo_frm
+{
+	height: 500px;
+	background-color: #F6F6F6;
+	position:relative;
+	bottom: 20px;
+}
+.slide_frm
+{
+	width:1100px;
+	height: 450px;
+	margin: 0 auto;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.slide_ul
+{
+	width:6000px;
+	height: 100%;
+	list-style-type: none;
+	position:relative;
+	right: 150px;
+	display: flex;
+    transition: .3s ease-out;
+}
+
+.slide_li
+{
+	width:1050px;
+	height:500px;
+	float:left;
+	position:relative;
+	top:10px;
+	padding-left:150px;
+	text-align:right;
+}
+
+/* div 안에 기사 제목 틀 */
+.news_photo_title
+{
+	width:320px;
+	height: 280px;
+	margin: 70px 0;
+	float: left;
+	position:relative;
+	z-index: 4;
+	background-color: #08377d
+	
+}
+.title
+{
+	font-size: 25px;
+	word-break: keep-all;
+    font-weight: 500;
+    overflow: hidden;
+   	padding: 60px 20px 15px 20px;
+   	text-align: left;
+   	color: #fff;
+   	margin: 0 auto;
+   	height: 128px;
+	text-overflow: ellipsis;
+   	
+}
+/* 기사 날짜 */
+.news_photo_wdate
+{
+	border-top: 1px solid #395789;
+	width: 280px;
+	height: 50px;
+	position: relative;
+	margin-left:20px;
+    color: rgba(255,255,255,.6);
+	top:10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.slide_s_r
+{
+	width: 290px;
+	height: 50px;rgb(0, 0, 0), 0, 0)rder: 2px solid red;
+	position: relative;
+	top:355px; 
+}
+.btn_auto
+{
+	margin: 16px 10px;
+	width: 14px;
+	height: 14px;
+	left:75px;
+	position: absolute;
+	vertical-align: top;
+}
+/* 버튼으로 넘어가기 멈추기 틀 */
+.btn_page
+{
+	position: absolute;
+	width: 150px;
+	height: 14px;
+	right: 10px;
+	margin: 16px 10px;
+	vertical-align: top;
+}
+.btn_page button
+{
+	position: relative;
+	bottom: 10px;
+	width: 14px;
+	height: 14px;
+	padding: 5px;
+	margin: 8px;
+	border-radius: 20px;
+}
+.news_slide_frm
+{
+	float: right;
+	position: relative;
+	width:800px; 
+	height: 450px;
+	z-index: 2;
+	bottom: 430px;
+}
+/* 이미지 슬라이드 멈추기 or 재생 */
+/* 버튼 왼, 오, 슬라이드쇼 재생, 멈춤 전체 틀 */
+.btn_group
+{
+	width: 100%;
+	height: 400px;
+    display: flex;
+    justify-content: center;
+}
+.btn_prev
+{
+    width: 38px;
+    height: 40px;
+    background-image: url(/news/img/왼쪽.png);
+    vertical-align: top;
+    font-size: 0;
+    left:330px;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom:450px;
+    background-color:transparent;
+	border: none;
+	cursor: pointer;
+}
+.btn_next
+{
+    width: 38px;
+    height: 40px;
+    background-image: url(/news/img/오른쪽.png);
+    vertical-align: top;
+    font-size: 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom:450px;
+    right:330px;
+    background-color:transparent;
+    border: none;
+    cursor: pointer;
+}
+/* ----------------------------------- */
+/* 컨텐츠2 틀 */
+.content2
+{
+	width: 100%;
+	height: 800px;
+	position:relative;
+	margin-bottom: 100px;
+}
+.content2_frm
+{
+	 width: 1200px; 
+	 display:flex;
+	 margin: 0 auto;
+	 height:700px;
+	 position:relative;
+}
+/*  */
+.frm
+{
+	position: relative;
+	width: 800px;
+	height: 680px;
+	display: inline;
+	
+}
+/* 오늘의 키워드랑 분석 대상 뉴스 건  틀*/
+.today_frm
+{
+	position: relative;
+	right:300px;
+}
+/* 오늘의 키워드 글씨 */
+.today_keyword
+{
+	font-size:22px;
+	width:180px;
+	height:50px;
+	position: relative;
+	left:275px;
+	text-align: center;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+/* 분석 대상 뉴스 건수 */
+.today_count
+{
+	width:270px;
+	height:30px;
+	position: relative;
+	left:300px;
+	text-align: left;
+	font-size:15px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+/* 오늘의 키워드 분석 기준 시간 */
+.today_wdate
+{
+	width:350px;
+	height:30px;
+	position: absolute;
+	margin: 0 auto;
+	left:770px;
+	top:56px;
+	font-size: 15px;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+/* 상위 카테고리들 */
+.total_frm
+{
+	font-size:0; 
+	width:798px; 
+	border:1px solid #ddd;
+	height:46px;
+	padding-left:0;
+}
+.total_frm li
+{
+	display: inline-block;  
+	height:46px; 
+	width:113px;
+	text-align:center; 
+	border-right:1px solid #ddd;
+}
+.total_frm li a:before
+{
+	content:""; 
+	position:absolute; 
+	left:0; 
+	top:0px; 
+	width:100%; 
+	height:3px; 
+}
+.total_frm li a.active:before
+{
+	background:#08377D;
+}
+.total_frm li a.active
+{
+	border-bottom:1px solid #fff;
+}
+.total_frm li a
+{ 
+	position:relative; 
+	display:block; 
+	background: #f8f8f8; 
+	color: #000; 
+	padding:0 20px; 
+	line-height:46px; 
+	text-decoration:none; 
+	font-size:16px;
+}
+.total_frm li a:hover,
+.total_frm li a.active
+{
+	background:#fff; color:#08377D; 
+}
+
+/* 전체, 상위 카테고리 클라우들 */
+
+.content2_cloud
+{
+	background-image: url(/news/img/wordcloud.png);
+	background-repeat: no-repeat;
+	padding: 20px; 
+	height:350px; 
+	border:1px solid #ddd; 
+	border-top:none;
+}
+.cloud_sort
+{
+	width: 240px;
+	height: 40px;
+	position: relative;
+	left:560px;
+	top: 15px;
+}
+.person, .region, .agency
+{
+	float:left;
+	margin-right: 10px;
+	list-style-position: inside;
+}
+.person::marker
+{
+	color:#F78E00;
+}
+.region::marker
+{
+	color:#23C4AE;
+}
+.agency::marker
+{
+	color:#0F58FF;
+}
+/* 오늘의 뉴스 현황 그래프 */
+.news_now_frm
+{
+	width: 30%;
+	height: 518px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border: 1px solid #D9E1E5;
+	position: absolute;
+	right: 3px;
+	padding: 13px;
+}
+.now_title
+{
+	position: relative;
+    width: 180px;
+    height: 50px;
+	text-align: center;
+    font-size: 22px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+.now_wdate
+{
+    width: 180px;
+    text-align: center;
+}
+.now_count
+{
+	float:right;
+    width: 100px;
+    text-align: right;
+    position: relative;
+    bottom: 22px;
+}
+/* 실시간 현황 그래프 */
+.now_graph
+{
+	float: right;
+	margin: 0 auto;
+	position:relative; 
+	top:100px;
+	height:500px;
+}
+
+/* tail 부분 */
+.tail
+{
+	min-width:1903px;
+	height:150px;
+	background-color:#363636;
+}
+
+.tailnote
+{
+	text-align:center;
+	position:relative;
+	font-size:25px;right:200px;
+	color: white;
+}
+
+.tailnote2
+{
+	 text-align:center;
+	 position:relative;
+	 font-size:15px;left:700px;
+	 color: white;
+}
+#upbutton
+{
+	position:fixed;
+	bottom:0px;
+	text-align:right;
+	right:20px;
+}
+
+/* The Modal (background) */
+.modal 
+{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	z-index:11;
+}
+
+/* Modal Content/Box */
+.modal-content 
+{
+	background-color: #fefefe;
+	margin:3% auto; /* 15% from the top and centered */
+	padding: 50px;
+	border: 1px solid #888;
+	width: 880px; /* Could be more or less, depending on screen size */
+	border-radius:30px;         
+	box-shadow:0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	z-index:12;   
+}
+
+.modal_footer
+{
+	 height:60px;
+	 background-color:gray;
+	 padding:20px;
+	 border-radius:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

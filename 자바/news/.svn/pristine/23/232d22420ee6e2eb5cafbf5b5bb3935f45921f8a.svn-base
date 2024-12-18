@@ -1,0 +1,149 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ include file="./include/head.jsp"%>
+<link rel="stylesheet" type="text/css" href="/news/style/sub.css" />
+<%
+String cate1 = request.getParameter("cate1");
+if(cate1 == null) cate1 = "정치";
+String cate2 = request.getParameter("cate2");
+if(cate2 == null) cate2 = "대통령실";
+%>
+<!-- 내용 -->
+<div class="wrap_frm">
+	<div class="wrap_cont">
+		<!-- navigation bar -->
+	<div class="navg">
+		<span class="navgtxt"><b>홈 > <%= cate1 %> > <%= cate2 %></b></span>
+	</div>
+	<!-- navigation bar 끝 -->
+	<!-- word cloud -->
+	<!-- word cloud 끝 -->
+	<span class="count"><b> 전체 건수 : 508 건  </b></span>
+	<hr style="width:1244px;margin-bottom: 20px;">
+	<!-- 뉴스 기사  -->
+	<div class="wrap_news">
+		<div class="wrap_news_frm">
+		<%
+		RefinedataDTO dto = new RefinedataDTO();
+		ArrayList<RefinedataVO> list = dto.GetNewsList(cate1, cate2);
+		for(RefinedataVO vo : list)
+		{
+			%>
+			<!-- 뉴스  -->
+			<div class="news">
+				<div style="cursor:pointer;" onClick="open_pop(<%= vo.getCdno() %>);" class="news">
+				<%
+				if(!vo.getRdimg().equals("이미지 없음"))
+				{
+					%>
+					<img src="<%= vo.getRdimg() %>" class="newsimg">
+					<%
+				}else
+				{
+					%>
+					<img src="/news/img/icon.png" class="newsimg">
+					<%
+				}%>
+				<div class="newstxt">
+					<b><%= vo.getRdtitle() %></b>
+					<p class="news_wdate"><%= vo.getRddate() %></p>
+					<div class="newscon" style="border: 2px solid blue">
+					이원욱 "당 지지도 하락…스스로 결단 내려야" 이상민 "본인 누명 벗기 위한 노력에 집중해야"
+					</div>
+					<div class="newswrt" style="border: 2px solid blue"><img src="<%= vo.getRdmedia() %>"> | <%= vo.getRdwriter() %></div>
+				</div>
+				</div>
+			</div>
+			<%
+		}
+		%>
+		</div>
+		<!-- 하위 클라우들 시작 -->
+		<div class="content2_cloud_frm">
+			<div class="1top" style="text-align: left;font-size: 22px;position:relative;left:10px;margin-top: 10px;">오늘의 키워드: <%= cate1 %></div>
+			<div class="1top_wdate" style="margin: 0 atuo;position: absolute;margin-top: 10px;font-size: 16px;left:10px;">2023.09.14(목)</div>
+			<div class="content2_cloud">
+				<div class="cloud_sort">
+					<ul>
+						<li class="person">인물 </li>
+						<li class="region">장소 </li>
+						<li class="agency">기관</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 하위 클라우들 끝 -->
+		<%
+		for(RefinedataVO vo2 : list)
+		{
+			%>
+			<!-- Modal 바깥 -->
+			<div id="myModal<%= vo2.getCdno() %>" class="modal">
+				<!-- Modal 안쪽 -->
+				<div class="modal-content">
+					<!-- 닫기1 버튼 -->
+					<div style="cursor:pointer;" onClick="close_pop(<%= vo2.getCdno() %>);">
+						<img src="/news/img/close.png" style="width:25px;float:right"></img>
+					</div>
+					<!-- 닫기 1버튼 끝 -->
+					<!-- 뉴스 작성 정보 -->
+					<div>
+						<b style="font-size:20pt;"><img src="<%= vo2.getRdmedia() %>" width="100px"><br></b>
+						<a href="<%= vo2.getRdurl() %>" style="border: 2px solid black; font-size: 14px; padding: 2px;">기사원문</a>
+						<p style="font-size:20pt;"><%= vo2.getRdtitle() %></p>
+						<p> <%= vo2.getRdwriter() %> | <%= vo2.getRddate() %></p>
+					</div>
+					<!-- 뉴스 작성 정보 끝 -->
+					<!-- 뉴스 내용 -->
+					<div>
+						<%= vo2.getRdnote() %>
+					</div>
+					<!-- 뉴스 내용 끝 -->
+					<!-- 워드 클라우드 -->
+					<div class="word_cloud_pop" style="text-align:center;">
+						<b style="font-size:20pt;">워드 클라우드<br></b>
+						<div id="wordcloud<%= vo2.getCdno() %>" style="width: 880px; height: 500px; border: 1px solid black;"></div>
+					</div>
+					<!-- 워드 클라우드 끝 -->
+					<!-- 네트워크 그래프 -->
+					<div class="network_pop" style="text-align:center;">
+						<b style="font-size:20pt;">네트워크 그래프<br></b>
+						<img src="/news/img/networkimg.jpg" style="border:1px solid black;width:640px;height:430px;"></img>
+					</div>
+					<!-- 네트워크 그래프 끝-->
+					<!-- 이전 / 이후 기사글이동 -->
+					<br>
+					<div class="modal_footer">
+						<div style="margin:0 auto;">이전 글 | 이전글이 없습니다.</div>
+						<hr style="width:830px;">
+						<div>다음 글 | 조국 "공산전체주의? 용산전체주의…누가 생경한 단어를 알려주고 있는 듯"</div>
+					</div>
+					<!-- 이전 / 이후 기사글이동 끝 -->
+					<!-- 닫기 버튼 2-->
+					<div style="cursor:pointer;width:880px;height:50px" onClick="close_pop(<%= vo2.getCdno() %>);">
+						<input type="button" value="닫기" style="float:right;margin:25px;width:80px;height:30px">
+					</div>
+					<!-- 닫기 버튼 2 끝 -->
+				</div>
+				<!--Modal 안쪽 끝-->
+			</div>
+		    <!--Modal 바깥 끝-->
+		    <%
+	 	}
+	 	%>
+	</div>
+	<!-- 뉴스 기사 끝-->
+	<!-- 페이징 처리 -->
+	<div class="pagearea">
+		<img src="img/left.png" class="pageleft">
+		<div class="pagenow">1</div>
+		<div class="page">2</div>
+		<div class="page">3</div>
+		<div class="page">4</div>
+		<div class="page">5</div>
+		<img src="img/right.png" class="pageright">
+	</div>
+	<!-- 페이징 처리 끝 -->
+</div>
+<!-- 내용 끝-->	
+<%@ include file="./include/tail.jsp"%>

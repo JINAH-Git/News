@@ -1,0 +1,53 @@
+//정제한 데이터 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+package news.dto;
+
+import news.vo.*;
+import news.dao.*;
+import java.util.ArrayList;
+
+public class RefinedataDTO extends DBManager
+{
+	//오늘의 뉴스 현황 그래프 내용가져오기
+	public int[] GetTotalNews(String time)
+	{
+		String gettime = time.substring(0, 14);
+		gettime = gettime.replace(" ", "").replace("년", "-").replace("월", "-").replace("일", "%");
+		
+		ArrayList<RefinedataVO> list = new ArrayList<RefinedataVO>();
+		RefinedataVO vo = null;
+		
+		int[] count = new int[6];
+		
+		this.DBOpen();
+		String sql = "";
+		sql  = "select count(*), cdtopcat as count from refinedata ";
+		sql += "where rdrefine = '2' and rddate like '" + gettime + "' ";
+		sql += "group by rdtopcat ";
+		System.out.println(sql);
+		
+		this.RunSelect(sql);
+		while(this.Next() == true)
+		{
+			vo = new RefinedataVO();
+			vo.setCdtopcat(this.getValue("cdtopcat"));
+			vo.setCdtopcat(this.getValue("count"));
+			list.add(vo);
+		}
+		this.DBClose();
+		
+		return count;
+	}
+	
+	//모달팝업 내용 가져오기
+	public void GetPopUp()
+	{
+		this.DBOpen();
+		String sql = "";
+		sql = "select ";
+		
+		
+		this.DBClose();
+		
+	}
+	
+}

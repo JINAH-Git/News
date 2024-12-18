@@ -1,0 +1,123 @@
+//클러스터링 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+package news.dto;
+
+import news.vo.*;
+import news.dao.*;
+import java.util.ArrayList;
+
+
+public class ClusteringDTO extends DBManager
+{
+	//클러스터링 기사 불러오기
+	public ArrayList<RefinedataVO> NewsList()
+	{
+		ArrayList<RefinedataVO> list = new ArrayList<RefinedataVO>();
+		RefinedataVO vo = null;
+		this.DBOpen();
+		String sql  = "";
+		sql  = "select rd.cdno, rd.rdrefine, rd.rdurl, rd.rdtopcat, rd.rdbtmcat, rd.rdmedia, rd.rdtitle, rd.rddate, rd.rdwriter, rd.rdnote, rd.rdimg, ctno, ctcluster "; 
+		sql += "from refinedata as rd ";
+		sql	+= "inner join clustering as ct on rd.cdno = ct.cdno ";
+		sql	+= "where rd.rdrefine = '2' ";
+		sql	+= "order by ctcluster desc ";
+		sql	+= "limit 5;";
+		this.RunSelect(sql);
+		//System.out.println(RunSelect(sql));
+		while(this.Next() == true)
+		{
+			vo = new RefinedataVO();
+			vo.setRdurl(this.getValue("rdurl"));
+			vo.setRdtopcat(this.getValue("rdtopcat"));
+			vo.setRdbtmcat(this.getValue("rdbtmcat"));
+			vo.setRdmedia(this.getValue("rdmedia"));
+			vo.setRdtitle(this.getValue("rdtitle"));
+			vo.setRddate(this.getValue("rddate"));
+			vo.setRdwriter(this.getValue("rdwriter"));
+			vo.setRdnote(this.getValue("rdnote"));
+			vo.setRdimg(this.getValue("rdimg"));
+			list.add(vo);
+		}
+		this.DBClose();
+		return list;
+	}
+	
+	//클러스터링 기사 갯수 5개 불러오기
+	public ArrayList<ClusteringVO> CtList()
+	{
+		ArrayList<ClusteringVO> list = new ArrayList<ClusteringVO>();
+		ClusteringVO vo = null;
+		this.DBOpen();
+		String sql  = "";
+		sql  = "select cdno, cttitle, ctcluster ";
+		sql += "from clustering ";
+		sql += "order by ctcluster desc ";
+		sql += "limit 5";
+		//System.out.println(sql);
+		this.RunSelect(sql);
+		//System.out.println(RunSelect(sql));
+		
+		//clustering테이블에 저장되어있는 cdno, cttitle, ctnluster값을 받아서 출력하기 위해서 VO에 저장해준다.
+		while(this.Next() == true)
+		{
+			vo = new ClusteringVO();
+			vo.setCdno(Integer.parseInt(this.getValue("cdno")));
+			vo.setCttitle(this.getValue("cttitle"));
+			vo.setCtcluster(this.getValue("ctcluster"));
+			list.add(vo);
+		}
+		this.DBClose();
+		return list;
+	}
+	
+	//분석 대상 뉴스 갯수 구하기
+	public ArrayList<ClusteringVO> NewsCount()
+	{
+		ArrayList<ClusteringVO> list = new ArrayList<ClusteringVO>();
+		ClusteringVO vo = null;
+		this.DBOpen();
+		
+		String sql = "";
+		sql  = "select count(*) as ctnews ";
+		sql += "from clustering";
+		this.RunSelect(sql);
+		
+		while(this.Next() == true)
+		{
+			vo = new ClusteringVO();
+			String ctnews = this.getValue("ctnews"); //문자열로 값을 다시 받아온다
+	        try {
+	            int ctnewsInt = Integer.parseInt(ctnews); //문자열로 받은 값을 정수로 변환한다
+	            String FormatCtnews = String.format("%,d", ctnewsInt); //콤마로 구분된 문자열로 포맷팅을 활용해서 구성해준다
+	            vo.setCtnews(FormatCtnews); //구성된 문자열을 설정
+	        } catch (NumberFormatException e) {
+	            //숫자로 변환할 수 없으면 에러 처리한다
+	            e.printStackTrace();
+	        }
+	        list.add(vo);
+		}
+		this.DBClose();
+		return list;
+	}
+	
+	//뉴스 클러스터링 갯수 구하기
+	public ArrayList<ClusteringVO> CtCount()
+	{
+		ArrayList<ClusteringVO> list = new ArrayList<ClusteringVO>();
+		ClusteringVO vo = null;
+		this.DBOpen();
+		String sql = "";
+		sql  = "select count(*) as ctcount ";
+		sql += "from clustering ";
+		sql += "where ctcluster != '0'";
+		this.RunSelect(sql);
+		
+		while(this.Next() == true)
+		{
+			vo = new ClusteringVO();
+			vo.setCtcount(this.getValue("ctcount"));
+			list.add(vo);
+		}
+		this.DBClose();
+		return list;
+	}
+}

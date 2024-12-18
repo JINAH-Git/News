@@ -1,0 +1,263 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="./include/head.jsp"%>
+<link rel="stylesheet" type="text/css" href="/news/style/search.css" />
+<%
+//검색 조건(option), 검색어(search)
+String option = request.getParameter("option");
+if(option == null) option = "";
+String search = request.getParameter("search_kyword");
+if(search == null)
+{
+	%>
+	<script>
+	//alert("검색어를 입력해주세요");
+	//window.location.href="index.jsp";
+	</script>
+	<%
+}
+Object words = new Object();
+RefinedataDTO rddto = new RefinedataDTO();
+%>
+<!-- 내용 -->
+<script>
+	var search = "<%= request.getParameter("search_kyword") %>";
+	//팝업 Open 기능
+	function open_pop(flag) {
+	     $('#myModal' + flag).show();
+	     $.ajax({
+			type:"get",
+			url:"wordcloud.jsp?no=" + flag,
+			dataType:"json",
+			success: function(data){
+				$("#wordcloud" + flag).jQCloud(data);	                        
+			},
+			error:function(){
+				alert("에러");       
+			}
+		})
+	};
+	//팝업 Close 기능
+	function close_pop(flag) {
+	     $('#myModal' + flag).hide();
+	};
+	//상위카테고리 체크박스선택에 따른 뉴스기사 보여주기
+	function getcheckbox(){
+		var selectedValues = [];
+		
+		$(".typelisttotal").find('input:checked').each(function(index){
+			console.log("Index: " + index + ", Value: " + $(this).val(),"검색어:" + search);
+			$("#selectedValues").val(selectedValues.join(",")); // 선택된 값을 콤마로 구분하여 저장
+			selectedValues.push($(this).val());
+			
+			
+			
+		});
+		/* $('input:checkbox').on('click',function(){
+			// 페이지 새로 고침
+            location.reload();
+		}); */
+		//$("#selectedValues").val() = selectedValues;
+		$.ajax({
+			type : "get",
+			url: "searchok.jsp?search=" + search + "&topcat=" +selectedValues,
+			dataType: "html",
+			success : function(data) 
+			{	
+				// 통신이 성공적으로 이루어졌을때 이 함수를 타게된다.
+			},
+			error : function(xhr, status, error) 
+			{
+				alert("ajax 오류.....");	
+			}
+		});
+		
+	};
+</script>
+<div class="wrap_cont">
+	<!-- navigation bar -->
+	<div class="navg">
+		<span class="navgtxt"><b>홈 > 검색</b></span>
+	</div>
+	<!-- navigation bar 끝 -->
+	<!-- word cloud -->
+	<!-- word cloud 끝 -->
+	<span class="count"><b> 검색어: <%= search %>  </b></span>
+	<hr style="width:1200px;margin-bottom:30px;">
+	<!-- 검색 컨텐츠 시작 -->
+	<div class="searchcnt">
+		<!-- 검색 분류 영역 시작 -->
+		<div class="typearea">
+			<span class="totalline">
+				<b style="font-size:22px">통합분류</b>
+			</span>
+			<!-- 분류 목록 시작 -->
+			<div class="typelisttotal">
+				<%
+				HashMap<String,Integer> catlist = rddto.GetCatTotal(search);
+				int count = 0;
+				%>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% String key = "정치"; %>정치<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% key = "경제"; %>경제<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" name="topcat2" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% key = "사회"; %>사회<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% key = "생활/문화"; %>생활/문화<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% key = "세계"; %>세계<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+				<div class="typelist">
+					<span style="display:inline-block; width:150px;">
+						<% key = "IT/과학"; %>IT/과학<small><% if(catlist.get(key)==null){count=0;}else{count=catlist.get(key);}%>(<%= count %>)</small>
+					</span>
+					<input class="topcat" type="checkbox" value="<%= key %>" onclick="getcheckbox()">
+				</div>
+			</div>
+			<!-- 분류 목록 종료 -->
+			<!-- 검색 결과 영역 시작 -->
+			<div style="width:950px; height:650px; margin-left:20px; position:relative; left:230px; bottom:330px;">
+				<h2 style="margin-top:0px;"><%= search %>(이)가 제목에 들어간 뉴스 검색 결과 <span id="intcolor"><!-- < %= rddto.GetSearchCnt(search) %> --></span> 건입니다.</h2>
+				<!-- 검색 결과 뉴스 리스트 영역 시작 -->
+				<input type="hidden" id="selectedValues" name="testing" value="">
+				<%
+				String values = request.getParameter("testing");
+				System.out.println(values);
+				//ArrayList<RefinedataVO> searchlist = rddto.GetSearchList(values, search);
+				%>
+				<table class="searchnewlist" border="0">
+					<tr>
+						<td class="td1" rowspan="3">
+							<img src="/news/img/listtest1.jpg" class="listpic">
+						</td>
+						<td class="td2">
+							<div class="td2div1">
+								<b>넥슨컴퓨터박물관, 제로하나컴퓨터박물관 전체 소장품 기증받아</b>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div2">
+								넥슨은 넥슨컴퓨터박물관이 제로하나컴퓨터박물관의 전체 소장품 4573점을 기증받았다고 6일 밝혔다.
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="td2">
+							<div class="td2div3">
+								<span class="td2div3span1">
+									매일경제 &nbsp
+								</span>
+								<span class="td2div3span2">
+									문화>출판|문화>미술_건축|IT_과학>콘텐츠
+								</span>
+								<span class="td2div3span3">
+									&nbsp 2023/09/06 &nbsp
+								</span>
+								<span class="td2div3span4">
+									윤선영
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<!-- 검색 결과 뉴스 리스트 영역 끝 -->
+				<%--
+				<%
+				list = rddto.GetSearchList(rdtopcat, search);
+				for(RefinedataVO vo2 : list)
+				{
+					%>
+					<!-- Modal 바깥 -->
+					<div id="myModal<%= vo2.getCdno() %>" class="modal">
+						<!-- Modal 안쪽 -->
+						<div class="modal-content">
+							<!-- 닫기1 버튼 -->
+							<div style="cursor:pointer;" onClick="close_pop(<%= vo2.getCdno() %>);">
+								<img src="/news/img/close.png" style="width:25px;float:right"></img>
+							</div>
+							<!-- 닫기 1버튼 끝 -->
+							<!-- 뉴스 작성 정보 -->
+							<div>
+								<b style="font-size:20pt;"><img src="<%= vo2.getRdmedia() %>" width="70px"><br></b>
+								<a href="<%= vo2.getRdurl() %>" target="_blank" style="border: 2px solid black; font-size: 14px; padding: 2px;">기사원문</a>
+								<p style="font-size:20pt;"><%= vo2.getRdtitle() %></p>
+								<p> <%= vo2.getRdwriter() %> | <%= vo2.getRddate() %></p>
+							</div>
+							<!-- 뉴스 작성 정보 끝 -->
+							<!-- 뉴스 내용 -->
+							<div>
+								<%= vo2.getRdnote() %>
+							</div>
+							<!-- 뉴스 내용 끝 -->
+							<!-- 워드 클라우드 -->
+							<div class="word_cloud_pop" style="text-align:center;">
+								<b style="font-size:20pt;">워드 클라우드<br></b>
+								<div id="wordcloud<%= vo2.getCdno() %>" style="width: 880px; height: 500px; border: 1px solid black;"></div>
+							</div>
+							<!-- 워드 클라우드 끝 -->
+							<!-- 네트워크 그래프 -->
+							<div class="network_pop" style="text-align:center;">
+								<b style="font-size:20pt;">네트워크 그래프<br></b>
+								<img src="/news/img/networkimg.jpg" style="border:1px solid black;width:640px;height:430px;"></img>
+							</div>
+							<!-- 네트워크 그래프 끝-->
+							<!-- 이전 / 이후 기사글이동 -->
+							<br>
+							<div class="modal_footer">
+								<div style="margin:0 auto;">이전 글 | 이전글이 없습니다.</div>
+								<hr style="width:830px;">
+								<div>다음 글 | 조국 "공산전체주의? 용산전체주의…누가 생경한 단어를 알려주고 있는 듯"</div>
+							</div>
+							<!-- 이전 / 이후 기사글이동 끝 -->
+							<!-- 닫기 버튼 2-->
+							<div style="cursor:pointer;width:880px;height:50px" onClick="close_pop(<%= vo2.getCdno() %>);">
+								<input type="button" value="닫기" style="float:right;margin:25px;width:80px;height:30px">
+							</div>
+							<!-- 닫기 버튼 2 끝 -->
+						</div>
+						<!--Modal 안쪽 끝-->
+					</div>
+				    <!--Modal 바깥 끝-->
+				    <%
+			 	}
+			 	%>  --%>
+			</div>
+			<!-- 검색 결과 영역 끝 -->
+		</div>
+		<!-- 페이징 처리 -->
+		<div class="pagearea">
+			<img src="img/left.png" class="pageleft">
+			<div class="pagenow">1</div>
+			<div class="page">2</div>
+			<div class="page">3</div>
+			<div class="page">4</div>
+			<div class="page">5</div>
+			<img src="img/right.png" class="pageright">
+		</div>
+		<!-- 페이징 처리 끝 -->
+	</div>
+</div>	
+<!-- 검색 컨텐츠 끝 -->
+<%@ include file="./include/tail.jsp"%>

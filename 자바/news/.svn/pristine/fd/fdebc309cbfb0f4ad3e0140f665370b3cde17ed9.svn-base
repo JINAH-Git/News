@@ -1,0 +1,18 @@
+//클러스터링 자료를 담기위한 VO(Value Object)클래스
+package news.vo;
+
+public class ClusteringVO 
+{
+	int    ctno;		//클러스터관리번호
+	int    cdno;        //기사관리번호
+	String ctcluster;	//클러스터
+	
+	public int 	  getCtno() 	 {	return ctno;		}
+	public int    getCdno() 	 {	return cdno;		}
+	public String getCtcluster() {	return ctcluster;	}
+	
+	public void setCdno(int cdno) 			   {	this.cdno = cdno;			}
+	public void setCtno(int ctno)			   {	this.ctno = ctno;			}
+	public void setCtcluster(String ctcluster) {	this.ctcluster = ctcluster;	}
+	
+}

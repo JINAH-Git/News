@@ -1,0 +1,224 @@
+@charset "EUC-KR";
+
+.top
+{
+	margin:auto;
+	margin-bottom:50px;
+	height:500px;
+	width:1200px;
+}
+
+.todkey
+{
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.intcolor
+{
+	color:blue;
+}
+
+.bsgj
+{
+	font-size: 12px;
+	position: relative;
+	left: 835px;
+}
+
+.todkeyword
+{
+	margin-top: 15px;
+	height: 435px;
+}
+
+#indexhr
+{
+	width: 1200px;
+}
+
+.todisct
+{
+	margin: auto;
+	margin-top: 50px;
+	height: 500px;
+	width: 1200px;
+}
+
+.todis
+{
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.bsnews
+{
+	font-size: 13px;
+}
+
+.newscluster
+{
+	font-size: 13px;
+	position: relative;
+	left: 40px;
+}
+
+.bsstd
+{
+	font-size: 12px;
+	position: relative;
+	left: 710px;
+}
+
+.todisarea
+{
+	margin-top: 15px;
+	height: 435px;
+}
+
+.todis5
+{
+	border-collapse: collapse;
+	width: 100%;
+	height: 70px;
+	table-layout: fixed;
+}
+
+.todistd
+{
+	vertical-align: top;
+	font-size: 15px;
+}
+
+.todistitle
+{
+	margin: 0px 20px 3px 20px;
+	height: 40px;
+}
+
+.todiscnt
+{
+	font-size: 12px;
+	margin: 0px 20px 0px 20px;
+	height: 13px;
+}
+
+.todisnewsarea
+{
+	margin: 20px 20px 20px 20px;
+	height: 320px;
+}
+
+#newslistarea
+{
+	width: 750px;
+	height: 100%;
+}
+
+.picarea
+{
+	margin: 15px 20px 15px 20px;
+	width: 250px;
+	height: 280px;
+}
+
+.totalnews
+{
+	font-size: 12px;
+	text-align: right;
+}
+
+.newspic
+{
+	margin: 15px 0px 10px 0px;
+	height: 150px;
+}
+
+.pictitle
+{
+	height: 50px;
+	font-size: 13px;
+}
+
+.newslistarea
+{
+	margin: 15px 20px 15px 20px;
+	position: relative;
+	width: 480px;
+	height: 280px;
+	bottom: 297px;
+	left: 250px;
+}
+
+.newslist
+{
+	border: none;
+	margin-left: 20px;
+	width: 450px;
+}
+
+.listtr
+{
+	vertical-align: top;
+	height: 30px;
+	font-size: 13px;
+}
+
+.listtitle
+{
+	width: 350px;
+}
+
+.listmedia
+{
+	text-align: right;
+}
+
+#grapharea
+{
+	position: relative;
+	bottom: 323px;
+	left: 753px;
+	width: 400px;
+	height: 100%;
+}
+
+.grpwrite
+{
+	position: relative;
+	margin: 30px 30px 0px 30px;
+	height: 290px;
+}
+
+.grptitle
+{
+	font-size: 20px;
+}
+
+.grparea
+{
+	margin-top: 20px;
+}
+
+.grpdate
+{
+	font-size: 12px;
+}
+
+.grpcnt
+{
+	font-size: 12px;
+	position: relative;
+	left: 170px;
+}
+
+
+
+
+
+
+
+
+
+
+

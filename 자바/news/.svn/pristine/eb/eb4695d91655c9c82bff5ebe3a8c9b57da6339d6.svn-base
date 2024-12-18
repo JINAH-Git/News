@@ -1,0 +1,30 @@
+//클러스터링 자료를 담기위한 VO(Value Object)클래스
+package news.vo;
+
+public class ClusteringVO 
+{
+	int    ctno;		//클러스터관리번호
+	String cttopcat;	//상위카테고리
+	String ctbtmcat;	//하위카테고리
+	String cttitle;		//제목
+	String ctdate;		//날짜
+	String ctnote;		//내용
+	String ctcluster;	//클러스터
+	
+	public int 	  getCtno() 	 {	return ctno;		}
+	public String getCttopcat()  {	return cttopcat;	}
+	public String getCtbtmcat()  {	return ctbtmcat;	}
+	public String getCttitle() 	 {	return cttitle;		}
+	public String getCtdate() 	 {	return ctdate;		}
+	public String getCtnote() 	 {	return ctnote;		}
+	public String getCtcluster() {	return ctcluster;	}
+	
+	public void setCtno(int ctno)			   {	this.ctno = ctno;			}
+	public void setCttopcat(String cttopcat)   {	this.cttopcat = cttopcat;	}
+	public void setCtbtmcat(String ctbtmcat)   {	this.ctbtmcat = ctbtmcat;	}
+	public void setCttitle(String cttitle) 	   {	this.cttitle = cttitle;		}
+	public void setCtdate(String ctdate) 	   {	this.ctdate = ctdate;		}
+	public void setCtnote(String ctnote) 	   {	this.ctnote = ctnote;		}
+	public void setCtcluster(String ctcluster) {	this.ctcluster = ctcluster;	}
+	
+}

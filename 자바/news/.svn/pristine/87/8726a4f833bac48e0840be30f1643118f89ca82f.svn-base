@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>검색 결과 페이지</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="/news/style/sub.css"/>
+	<body style="margin:0px">
+		<div style="border:1px solid red; margin:0 auto; margin-bottom:50px; width:1400px; height:150px;">
+			head영역
+		</div>
+		<!-- 네비게이션 -->
+		<div class="navg">
+			<span class="navgtxt">홈 > 검색 </span>
+			<hr style="width:1300px">
+		</div>
+		<!-- 검색 분류 영역 시작 -->
+		<div>
+			
+		</div>
+		<!-- 검색 분류 영역 끝 -->
+	</body>
+</html>

@@ -1,0 +1,58 @@
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance 
+var chart = am4core.create("now_graph", am4charts.XYChart);
+
+// Add data
+chart.data = [{
+  "카테고리": "정치",
+  "건수": 2025
+}, {
+  "카테고리": "경제",
+  "건수": 1882
+}, {
+  "카테고리": "사회",
+  "건수": 1809
+}, {
+  "카테고리": "생활/문화",
+  "건수": 1322
+}, {
+  "카테고리": "세계",
+  "건수": 1122
+}, {
+  "카테고리": "IT/과학",
+  "건수": 1114
+}];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "카테고리";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
+
+categoryAxis.renderer.labels.template.adapter.add("dy", function(dy, target) {
+  if (target.dataItem && target.dataItem.index & 2 == 2) {
+    return dy + 25;
+  }
+  return dy;
+});
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "건수";
+series.dataFields.categoryX = "카테고리";
+series.name = "건수";
+series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+series.columns.template.fillOpacity = .8;
+
+var columnTemplate = series.columns.template;
+columnTemplate.strokeWidth = 2;
+columnTemplate.strokeOpacity = 1;
+
+}); // end am4core.ready()

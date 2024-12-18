@@ -1,0 +1,15 @@
+//클러스터링 정보를 모델(Model)로 부터 처리하기 위한 DTO클래스(Data Transfer Object)
+package news.dto;
+
+import news.vo.*;
+import news.dao.*;
+
+public class ClusteringDTO 
+{
+	//클러스터링 내용 불러와서, 메인화면에 뿌려주기
+	public void GetCluster()
+	{
+		
+		
+	}
+}

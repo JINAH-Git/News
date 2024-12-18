@@ -1,0 +1,35 @@
+@charset "EUC-KR";
+
+/*상단이동버튼*/
+.topbutton
+{
+	position:fixed;
+	bottom:50px;
+	text-align:right; 
+	right:250px;
+	filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.12))
+			drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14))
+			drop-shadow(0 1px 8px rgba(0, 0, 0, 0.12))
+			drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.tail
+{
+	min-width:1903px;
+	height:150px;
+	background-color:#363636;
+}
+
+.tailnote
+{
+	text-align:center;
+	position:relative;
+	font-size:25px;right:200px;
+}
+
+.tailnote2
+{
+	 text-align:center;
+	 position:relative;
+	 font-size:15px;left:700px;
+}

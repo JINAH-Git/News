@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>메인 페이지</title>
+	</head>
+	<body style="margin:0px">
+		<div style="border:1px solid red; margin:0 auto; margin-bottom:50px; width:1400px; height:150px;">
+			head영역
+		</div>
+		<div style="border:1px solid gray; margin:auto; margin-bottom:50px; height:500px; width:1200px;">
+			<span style="font-size:20px; margin-left:10px;">
+				<b>오늘의 키워드</b>
+			</span>
+			<div>
+				<span style="border:1px solid red; font-size:12px;">
+					분석 대상 뉴스 2500건
+				</span>
+				<span style="border:1px solid red; font-size:12px; position:relative; left:860px;">분석기준 2023.09.06(수) 00:00 ~ 09:00</span>
+			</div>
+			<div style="border:1px solid blue; mar margin-top:15px; height:430px;">
+				그래프 영역
+			</div>
+		</div>
+		<hr style="width:1200px;">
+		<div style="border:1px solid gray; margin:auto; margin-top:50px; height:500px; width:1200px;">
+			<span style="font-size:20px; margin-left:10px;">
+				<b>오늘의 이슈</b>
+			</span>
+			<div>
+				<span style="border:1px solid red; font-size:12px;">
+					분석 대상 뉴스 1000건
+				</span>
+				<span style="border:1px solid red; font-size:12px; position:relative; left:40px;">
+				뉴스클러스터 628건
+				</span>
+				<span style="border:1px solid red; font-size:12px; position:relative; left:740px;">
+				분석기준 2023.09.06(수) 00:00 ~ 09:00
+				</span>
+			</div>
+		</div>
+		<div style="border:1px solid red; margin:auto; margin-top:50px; width:100%; height:150px;">
+			tail영역
+		</div>
+	</body>
+</html>

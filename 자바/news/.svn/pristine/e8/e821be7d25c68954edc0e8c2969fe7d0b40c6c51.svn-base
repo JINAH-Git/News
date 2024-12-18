@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/json; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>    
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%
+String code = request.getParameter("code");
+JSONObject data = null;
+JSONArray arr = new JSONArray();
+String json = null;
+if(code.equals("1")) //상위카테고리와 하위 카테고리에 해당되는 워드클라우드
+{
+	/* String cate1 = request.getParameter("cate1");
+	String cate2 = request.getParameter("cate2");
+	RefinedataDTO rdto = new RefinedataDTO();
+	ArrayList<RefinedataVO> list = rdto.GetNewsList("정치","대통령실");
+	for(RefinedataVO vo : list)
+	{
+		NounmappingDTO ndto = new NounmappingDTO();
+		String nouns = ndto.GetNouns(Integer.toString(vo.getCdno()));
+		String[] word = nouns.split(",");
+		for(int i = 0; i < word.length; i++)
+		{
+			String[] item = word[i].split(":");
+			String wordname = item[0];
+			wordname = wordname.replace("'","").replace("{","").replace(" ","");
+			String wordcount = item[1];
+			wordcount = wordcount.replace("}","").replace(" ","");
+			data = new JSONObject();
+			data.put("text",wordname);
+			data.put("weight",wordcount);
+			arr.add(data);
+		}
+	}
+	json = arr.toJSONString();
+	out.print(json); */
+}else if(code.equals("2")) //게시물을 클릭했을 때 게시물에 해당되는 워드클라우드
+{
+	String no = request.getParameter("no");
+	if(no == null)
+	{
+		response.sendRedirect("index.jsp");
+		return;
+	}
+	NounmappingDTO ndto = new NounmappingDTO();
+	String nouns = ndto.GetNouns(no);
+	String[] word = nouns.split(",");
+	for(int i = 0; i < word.length; i++)
+	{
+		String[] item = word[i].split(":");
+		String wordname = item[0];
+		wordname = wordname.replace("'","").replace("{","").replace("}","").replace(" ","");
+		String wordcount = item[1];
+		wordcount = wordcount.replace("'","").replace("{","").replace("}","").replace(" ","");
+		data = new JSONObject();
+		data.put("text",wordname);
+		data.put("weight",wordcount);
+		String sort = ndto.GetNounSort(wordname);
+		if(sort.equals("1")) data.put("color","#F78E00");
+		else if(sort.equals("인물")) data.put("color","red");
+		arr.add(data);
+	}
+	
+	json = arr.toJSONString();
+	out.print(json);
+}
+%>

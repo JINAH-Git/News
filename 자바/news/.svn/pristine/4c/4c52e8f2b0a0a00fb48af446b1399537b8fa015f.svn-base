@@ -1,0 +1,290 @@
+@charset "EUC-KR";
+
+
+/* 컨텐츠 */
+.wrap_cont
+{
+	width:1300px;
+	min-height:1000px;
+	margin:0 auto;
+	margin-bottom:100px;
+	margin-top:170px;
+}
+
+/* 네비게이션 */
+.navg
+{
+	width:200px;
+	height:30px;
+	margin-bottom: 10px;
+	position:relative;
+	float:right;
+	text-align: center;
+	right:14px;
+}
+
+.navgtxt
+{
+	 font-size:16px; 
+	 position:relative; 
+	 right:0px;
+	 margin: 0 auto;
+	 width: 100px;
+}
+
+/*워드 클라우드*/
+.word_cloud
+{
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius:30px;
+	width:800px;
+	height:390px;
+	margin:0 auto;
+}
+/*전체 기사 건수*/
+.count
+{
+	font-size:18px;
+	position:relative; 
+	left:30px;
+}
+
+/* 뉴스 기사 부분 */
+.wrap_news
+{
+	display: flex;
+	 width:1240px;
+	 height:1400px;
+	 margin:0 auto;
+}
+/* 뉴스 사진과 기사 제목 날짜 틀 */
+.wrap_news_frm
+{
+	width: 750px;
+}
+.news
+{
+	height:280px;
+}
+
+.newsimg
+{
+	margin-bottom:30px;
+	width:440px;
+	height:240px;
+	
+}
+
+.newstxt
+{
+	font-size:20px;
+	width:280px;
+	height: 234px;
+	position:relative;
+	left:458px;
+	top:-270px;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newscon
+{
+	font-size:18px;
+	position: absolute;
+	top: 90px;
+	padding: 5px 0;
+	overflow:hidden; 
+	text-overflow: ellipsis; 
+	display: -webkit-box; 
+	-webkit-line-clamp: 3; 
+	-webkit-box-orient: vertical; 
+	height: 50px; 
+	font-size: 14px;
+}
+
+.newswrt
+{
+	font-size:14px;
+	position: absolute;
+	top: 205px;
+	padding: 5px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.news_wdate
+{
+	position: absolute;
+	top: 36px;
+	font-size: 15px;
+	padding: 10px 0;
+	font-family: 'Nanum Gothic', sans-serif;
+}
+.content2_cloud_frm
+{
+	border: 1px solid #D9E1E5;
+	width: 450px;
+	height: 480px;
+	position: fixed;
+	float:right;
+	right:330px;
+}
+.content2_cloud
+{
+	width: 450px;
+	height: 400px;
+	background-repeat: no-repeat;
+	border: 1px solid #D9E1E5;
+	position: fixed;
+	float:right;
+	margin-top: 40px;
+}
+.cloud_sort
+{
+	position: relative;
+	width: 205px;
+	height:50px;
+	left: 260px;
+	text-align: center;
+	margin-right: 5px;
+}
+.person, .region, .agency
+{
+	float:left;
+	margin-right:22px;
+	font-size: 14px;
+	color: #000;
+}
+.person::marker
+{
+	color:#F78E00;
+}
+.region::marker
+{
+	color:#23C4AE;
+}
+.agency::marker
+{
+	color:#0F58FF;
+}
+/* The Modal (background) */
+.modal 
+{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	z-index:11;
+}
+
+/* Modal Content/Box */
+.modal-content 
+{
+	background-color: #fefefe;
+	margin:3% auto; /* 15% from the top and centered */
+	padding: 50px;
+	border: 1px solid #888;
+	width: 880px; /* Could be more or less, depending on screen size */
+	border-radius:30px;         
+	box-shadow:0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	z-index:12;   
+}
+
+.modal_footer
+{
+	 height:60px;
+	 background-color:gray;
+	 padding:20px;
+	 border-radius:30px;
+}
+
+.pagearea
+{
+	margin: auto;
+	width:450px;
+	height:100px;
+	margin-top:50px;
+}
+
+.pagenow
+{
+	background-color:#004AAD;
+	width:40px;
+	height:30px;
+	border-radius:10px;
+	text-align:center;
+	vertical-align:center;
+	padding-top:10px;
+	margin:10px;
+	float:left;
+	top:75px;
+}
+
+.page
+{
+	background-color:#D9D9D9;
+	width:40px;
+	height:30px;
+	border-radius:10px;
+	text-align:center;
+	padding-top:10px;
+	margin:10px;
+	float:left;
+	top:75px;
+}
+
+.pageleft
+{
+	width:40px;
+	height:40px;
+	margin:10px;
+	float:left;
+}
+
+.pageright
+{
+	width:40px;
+	height:40px;
+	margin:10px;
+	float:left;
+}
+#upbutton
+{
+	position:fixed;
+	bottom:0px;
+	text-align:right;
+	right:20px;
+	
+}
+.tailnote
+{
+	text-align:center;
+	position:relative;
+	font-size:25px;right:200px;
+	color: white;
+}
+
+.tailnote2
+{
+	 text-align:center;
+	 position:relative;
+	 font-size:15px;left:700px;
+	 color: white;
+}
+
+#NETWORK_GRAPH .node-label 
+{ 
+	font-size: 14px; 
+	font-weight:bold; 
+	color:#111; 
+	stroke: white;
+	stroke-width: 1.5px;
+	paint-order: stroke fill; 
+	text-anchor: middle;
+}

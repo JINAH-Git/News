@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>카테고리 별 뉴스</title>
+	</head>
+	<body style="margin:0px">
+		<!-- head -->
+		<div style="border:1px solid red; margin:0 auto; margin-bottom:50px; width:1400px; height:150px;">
+			head영역
+		</div>
+		<!-- navigation bar -->
+		<div style="width:1300px;height:75px;margin:0 auto;">
+			<span style="font-size:15px; position:relative; left:1230px;">홈 > 정치 </span>
+			<hr style="width:1300px">
+		</div>
+		<!-- word cloud -->
+		<div style="width:1200px;min-height:1000px;margin:0 auto;margin-bottom:100px;">
+			<div style="border:1px solid red;width:1200px;height:500px;margin:0 auto;">
+				워드클라우드
+			</div>
+			<span style="font-size:15px;position:relative; left:970px;"> 전체 건수 : 508 건  </span>
+			<hr style="width:1000px">
+			<!-- 뉴스 기사  -->
+			<div style="width:1000px;min-height:500px;margin:0 auto;">
+				<div style="height:180px">
+					<div style="border:1px solid red;margin:30px;width:200px;height:140px">img</div>
+					<div style="font-size:20px;width:700px;position:relative;left:250px;top:-170px;">
+						<b>비명계, 이재명 단식에도 사퇴 촉구 "기승전 방탄…결단해야"</b><br>
+						<div style="font-size:18px;"><br>
+						이원욱 "당 지지도 하락…스스로 결단 내려야" 이상민 "본인 누명 벗기 위한 노력에 집중해야"<br>
+						</div>
+						<div style="font-size:14px;"><br>뉴시스 | 이승재 기자</div>
+					</div>
+				</div>
+				<div style="height:180px">
+					<div style="border:1px solid red;margin:30px;width:200px;height:140px">img</div>
+					<div style="font-size:20px;width:700px;position:relative;left:250px;top:-170px;">
+						<b>조국 "공산전체주의? 용산전체주의…누가 생경한 단어를 알려주고 있는 듯"</b><br>
+						<div style="font-size:18px;"><br>
+						조국 전 법무부 장관이 윤석열 정부를 향해 "용산(대통령실)이 전체주의에 장악돼있는 게 아니냐"고 비판했다.<br>
+						</div>
+						<div style="font-size:14px;"><br>프레시안 | 박세열 기자</div>
+					</div>
+				</div>
+				<div style="height:180px">
+					<div style="border:1px solid red;margin:30px;width:200px;height:140px">img</div>
+					<div style="font-size:20px;width:700px;position:relative;left:250px;top:-170px;">
+						<b>최재성 "박민식 미쳤다…정상적이지가 않아"</b><br>
+						<div style="font-size:18px;"><br>
+						박민식 보훈부 장관이 "백선엽 장군이 친일이면 문재인 전 대통령 부친도 친일"이라는 취지의 발언을 해 문재인 전 대통령...<br>
+						</div>
+						<div style="font-size:14px;"><br>아시아 경제 | 이지은 기자</div>
+					</div>
+				</div>
+				<div style="height:180px">
+					<div style="border:1px solid red;margin:30px;width:200px;height:140px">img</div>
+					<div style="font-size:20px;width:700px;position:relative;left:250px;top:-170px;">
+						<b>단식 8일차 이재명 “자식 잃은 부모 이기려 드는 정권 오래 갈 수 없어”</b><br>
+						<div style="font-size:18px;"><br>
+						이재명 더불어민주당 대표는 7일 “자식 잃은 부모를 이기려 드는 정권은 결코 오래 갈 수 없다”며 
+						“대통령은 예를 갖춰 죽어나간 희생자분들...<br>
+						</div>
+						<div style="font-size:14px;"><br>경향신문 | 탁지영 기자</div>
+					</div>
+				</div>
+				<div style="height:180px">
+					<div style="border:1px solid red;margin:30px;width:200px;height:140px">img</div>
+					<div style="font-size:20px;width:700px;position:relative;left:250px;top:-170px;">
+						<b>"끌어내려야" "정권 오래 못 가" 李, 연일 탄핵 시사 강경 발언 왜?</b><br>
+						<div style="font-size:18px;"><br>
+						단식 투쟁을 벌이고 있는 이재명 더불어민주당 대표가 7일 윤석열 대통령 탄핵을 시사하는 듯한 발언을 이어갔다.<br>
+						</div>
+						<div style="font-size:14px;"><br>한국경제 | 홍민성 기자</div>
+					</div>
+				</div>
+			</div>
+			<div style="margin:50px;margin-left:500px"> ◀    1  |  2  |  3  |  4  |  5    ▶</div>
+		</div>			
+		<!-- tail -->
+		<div style="background-color:gray;width:100%;height:150px;margin:0 auto;">
+			
+		</div>
+	</body>
+</html>

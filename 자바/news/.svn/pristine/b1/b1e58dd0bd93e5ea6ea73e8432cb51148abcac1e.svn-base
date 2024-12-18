@@ -1,0 +1,110 @@
+@charset "EUC-KR";
+
+/* head부분 */ 
+.head
+{
+	border:1px solid red; 
+	margin:0 auto; 
+	margin-bottom:50px; 
+	width:1400px; 
+	height:200px;
+}
+
+.mainicon
+{
+	font-size:30pt;
+	margin:35px;
+	position:relative;
+	top:50px;
+}
+
+a
+{
+	text-decoration-line: none;
+}
+
+.section
+{
+	font-size:20pt;
+	margin:35px;
+	position:relative;
+	top:50px;
+}
+
+/* 네비게이션 */
+.navg
+{
+	width:1300px;
+	height:75px;
+	margin:0 auto;
+}
+
+.navgtxt
+{
+	 font-size:15px; 
+	 position:relative; 
+	 left:1230px;
+}
+
+.wrap_cont
+{
+	width:1200px;
+	min-height:1000px;
+	margin:0 auto;
+	margin-bottom:100px;
+}
+/*워드 클라우드*/
+.word_cloud
+{
+	border:2px solid gray;
+	border-radius:30px;
+	width:1200px;
+	height:500px;
+	margin:0 auto;
+}
+/*전체 기사 건수*/
+.count
+{
+	font-size:15px;
+	position:relative; 
+	left:970px;
+}
+
+/* 뉴스 기사 부분 */
+.wrap_news
+{
+	 width:1000px;
+	 min-height:500px;
+	 margin:0 auto;
+}
+
+.news
+{
+	height:180px;
+}
+
+.newsimg
+{
+	margin:30px;
+	width:200px;
+	height:140px;
+}
+
+.newstxt
+{
+	font-size:20px;
+	width:700px;
+	position:relative;
+	left:250px;
+	top:-170px;
+}
+
+.newscon
+{
+	font-size:18px;
+}
+
+.newswrt
+{
+	font-size:14px;
+}

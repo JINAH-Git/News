@@ -1,0 +1,160 @@
+@charset "EUC-KR";
+
+/* head부분 */ 
+.head
+{
+	margin:0 auto; 
+	margin-bottom:50px; 
+	width:1400px; 
+	height:160px;
+}
+
+.mainicon
+{
+	font-size:35pt;
+	margin:35px;
+	position:relative;
+	left:50px;
+	top:50px;
+}
+
+a
+{
+	text-decoration-line: none;
+}
+
+.wrap_section
+{
+	/*border:1px solid blue;*/
+	position:relative;
+	width:1080px;
+	left:320px;
+	height:110px;
+	top:10px;
+}
+
+.section1{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+.section2{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+.section3{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+.section4{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+.section5{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+.section6{font-size:20pt;margin-left:30px;margin-right:30px;position:relative;float:left;}
+
+
+.subsection1{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+.subsection2{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+.subsection3{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+.subsection4{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+.subsection5{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+.subsection6{display: none;position:absolute;font-size:17pt;top:60px;margin-left:30px;}
+
+.section1:hover ~ .subsection1{display: block;}
+.section2:hover ~ .subsection2{display: block;}
+.section3:hover ~ .subsection3{display: block;}
+.section4:hover ~ .subsection4{display: block;}
+.section5:hover ~ .subsection5{display: block;}
+.section6:hover ~ .subsection6{display: block;} 
+
+/* 네비게이션 */
+.navg
+{
+	width:1300px;
+	height:75px;
+	margin:0 auto;
+}
+
+.navgtxt
+{
+	 font-size:15px; 
+	 position:relative; 
+	 left:1230px;
+}
+
+.wrap_cont
+{
+	width:1200px;
+	min-height:1000px;
+	margin:0 auto;
+	margin-bottom:100px;
+}
+/*워드 클라우드*/
+.word_cloud
+{
+	border:2px solid gray;
+	border-radius:30px;
+	width:1200px;
+	height:500px;
+	margin:0 auto;
+}
+/*전체 기사 건수*/
+.count
+{
+	font-size:20px;
+	position:relative; 
+	left:930px;
+}
+
+/* 뉴스 기사 부분 */
+.wrap_news
+{
+	 width:1000px;
+	 min-height:500px;
+	 margin:0 auto;
+}
+
+.news
+{
+	height:180px;
+}
+
+.newsimg
+{
+	margin:30px;
+	width:200px;
+	height:140px;
+}
+
+.newstxt
+{
+	font-size:20px;
+	width:700px;
+	position:relative;
+	left:250px;
+	top:-170px;
+}
+
+.newscon
+{
+	font-size:18px;
+}
+
+.newswrt
+{
+	font-size:14px;
+}
+
+/* The Modal (background) */
+.modal 
+{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content 
+{
+	background-color: #fefefe;
+	margin:3% auto; /* 15% from the top and centered */
+	padding: 50px;
+	border: 1px solid #888;
+	width: 880px; /* Could be more or less, depending on screen size */
+	border-radius:30px;                          
+}

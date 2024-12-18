@@ -1,0 +1,42 @@
+var chartDom = document.getElementsByClassName('now_graph')[0];
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: ['정치', '경제', '사회', '생활/문화', 'IT/과학', '세계'],
+      axisTick: {
+        alignWithLabel: true
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Direct',
+      type: 'bar',
+      barWidth: '60%',
+      data: [40755, 49716,102830,17163,11480,9247]
+    }
+  ]
+};
+
+option && myChart.setOption(option);

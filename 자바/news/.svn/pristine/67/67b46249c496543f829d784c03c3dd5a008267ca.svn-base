@@ -1,0 +1,218 @@
+@charset "EUC-KR";
+
+/* ======head 부분 시작 */ 
+#head
+{
+	margin:0 auto; 
+	width:100%; 
+	height:120px;
+	background-color:white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index:10;
+}
+.header_inner
+{
+	position: relative;
+    width: 100%;
+    height: 135px;
+    margin: 0 auto;
+}
+.mainicon
+{
+	position:absolute;
+	left:300px;
+	top:5px;
+	margin:0 auto;
+	height:64px;
+	padding-top:28px;
+	box-sizing: content-box;
+	font-size:40px;
+	max-width: inherit;
+}
+
+a
+{
+	text-decoration-line: none;
+	color:black;
+}
+
+/* 상위 카테고리들 */
+.wrap_section
+{
+	position:relative;
+	width:800px;
+	height:90px;
+	left:740px;
+	top:35px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.section1{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+.section2{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+.section3{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+.section4{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+.section5{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+.section6{padding:20px 10px;font-family: 'Nanum Gothic', sans-serif;font-size:17pt;margin-left:25px;margin-right:25px;position:relative;float:left;}
+
+
+.subsection1{display: none;position:absolute;font-size:15pt;top:60px;margin-left:30px;text-align:center;}
+.subsection2{display: none;position:absolute;font-size:15pt;top:60px;margin-left:70px;width:850px;text-align:center;}
+.subsection3{display: none;position:absolute;font-size:15pt;top:60px;margin-left:50px;width:900px;}
+.subsection4{display: none;position:absolute;font-size:15pt;top:60px;right:0px;width:1250px;text-align:right;}
+.subsection5{display: none;position:absolute;font-size:15pt;top:60px;margin-left:30px;right:15px;text-align:center;}
+.subsection6{display: none;position:absolute;font-size:15pt;top:60px;margin-left:100px;width:900px;text-align:center;}
+
+.section1:hover{text-decoration: underline;}
+.section2:hover{text-decoration: underline;}
+.section3:hover{text-decoration: underline;}
+.section4:hover{text-decoration: underline;}
+.section5:hover{text-decoration: underline;}
+.section6:hover{text-decoration: underline;}
+
+/* .section1:hover ~ .subsection1{display: block;}
+.section2:hover ~ .subsection2{display: block;}
+.section3:hover ~ .subsection3{display: block;}
+.section4:hover ~ .subsection4{display: block;}
+.section5:hover ~ .subsection5{display: block;}
+.section6:hover ~ .subsection6{display: block;}  */
+
+
+/* ======head 부분 끝 */
+
+
+#top_search
+{
+	float:right;
+	top:20px;	
+	position: relative;
+	right:0;
+	
+}
+.keyword_area
+{
+	margin-bottom:50px;
+	height:500px;
+	width:1200px;
+	position: relative;
+    max-width: 1360px;
+    padding: 20px 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+/* 검색 전체 틀 */
+#site_search
+{
+   	background: white;
+   	margin: 0 auto;
+    width: 100%;
+    display: none;
+    z-index: 30;
+    height: 130px;
+    overflow: hidden;
+    top:111px;
+    
+}
+/* 통합검색과 검색어 틀*/
+.center
+{
+    width: 600px;
+    margin: 0 auto;
+    display: block;
+}
+/* 통합검색 글씨 */
+#site_search p 
+{
+	position:relative;
+	right:116px;
+	width: 300px;
+	margin: 30px auto 10px;
+	font-size:18px;
+	color:black;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search_box
+{
+    position:relative;
+    width: 600px;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    padding: 0px;
+    overflow: auto;
+}
+.placeholder_box
+{
+	position: relative;
+	color:black;
+	left:30px;
+	width:500px;
+	height:100px;
+}
+#site_search .search_box label 
+{
+    font-weight: 600;
+    position: absolute;
+    font-weight: 400;
+    margin-top: 6px;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+}
+/* 검색어를 입력해주세요 입력 창 */
+#site_search .search_box input[type=text] 
+{
+    height: 45px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    width: 570px;
+    margin: 0 auto;
+}
+/* 검색 버튼 */
+.search_btn 
+{
+	position:absolute;
+    background-size: 24px;
+    background-color:transparent;
+    width: 36px;
+    height: 36px;
+    left:534px;
+    margin: 0 auto;
+    top: 3px;
+    transition: .3s cubic-bezier(.43,.08,.57,.83);
+}
+.blank_search
+{
+	font-family: 'Noto Sans KR';
+	sans-serif;
+	font-size:16px;
+	outline:none;
+}
+/* 로딩중 화면  */
+#loading 
+{
+   width: 100vw;
+   height: 40vw;
+   top: 0;
+   left: 0;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 99;
+   text-align: center;
+}
+#loading-image 
+{
+  position: absolute;
+  z-index: 100;
+  width:80vw; 
+  height: 40vw; 
+  margin-left:-5vw;
+}

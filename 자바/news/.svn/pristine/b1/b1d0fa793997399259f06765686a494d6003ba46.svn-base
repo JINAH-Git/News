@@ -1,0 +1,298 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>
+<%
+String cate1 = request.getParameter("cate1");
+if(cate1 == null) cate1 = "정치";
+String cate2 = request.getParameter("cate2");
+if(cate2 == null) cate2 = "대통령실";
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>카테고리 별 뉴스</title>
+		<link rel="stylesheet" type="text/css" href="/news/style/sub.css" />
+		<link rel="stylesheet" type="text/css" href="/news/style/tail.css" />
+		<script src="js/jquery-3.7.0.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<!-- 글씨 스타일 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+		<!-- 상위 카테고리 글씨 -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+		<!-- 워드클라우드 -->
+		<script src="https://golangkorea.github.io/js/jqcloud/jqcloud.min.js"></script>
+		<link rel="stylesheet" href="https://golangkorea.github.io/js/jqcloud/jqcloud.min.css">
+	</head>
+	<script>      
+        //팝업 Open 기능
+        function open_pop(flag) {
+             $('#myModal' + flag).show();
+             $.ajax({
+                type:"get",
+                url:"wordcloud.jsp?no=" + flag,
+                dataType:"json",
+                success: function(data){
+                    $("#wordcloud" + flag).jQCloud(data);
+                },
+                error:function(){
+                	alert("에러");      
+                }
+			})
+        };
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal' + flag).hide();
+        };
+        //검색 창 클릭 시 기능
+        $(function(){
+        	$("#top_search").click(function(){
+        		if($("#site_search").css("display") == "none")
+        		{
+        			$("#site_search").show();
+        			$("#search_kyword").focus();
+        		}
+        		else if($("#site_search").css("display")!= "None")
+       			{
+        			$("#site_search").hide();
+       			}
+        	});
+        	// 검색 창 외에 다른 구간 선택시 검색 창 없애기
+            $(".wrap_frm").click(function(){
+            	if($("#site_search").css("display") != "none")
+           		{
+            		$("#site_search").hide();
+           		}
+            });
+            /**/
+            
+            	if($("#site_search").css("display") != "none")
+           		{
+            		$(".header_inner").click(function(){
+            			alert("test");
+                		$("#site_search").hide();
+            		});
+           		}
+        });
+       	/*  검색어 버튼 누르면 검색 넘어가기 */
+       	$(function(){
+	      	$(".search_btn").click(function()
+   			{
+	        	$("#search_frm").submit();
+        	});
+   		});
+        
+    </script>
+	<body>
+		<!-- head 시작 -->	
+		<div id="head">
+			<div class="header_inner">
+				<!-- 로고 시작 -->
+				<div class="mainicon"><a href="index.jsp"><b>Newsroom</b></a></div>
+				<!-- 로고 끝 -->
+				<!-- 상위 카테고리 시작 -->
+				<div class="wrap_section">
+					<div class="section1"><a href="sub.jsp">정치</a></div>
+					<div class="section2">경제</div>
+					<div class="section3">사회</div>
+					<div class="section4">생활/문화</div>
+					<div class="section5">세계</div>
+					<div class="section6">IT/과학</div>
+					<div id="top_search">
+						<img src="/news/img/search.png" style="width:22px;height:22px;">
+					</div>
+					<!-- 하위카테고리 시작 -->
+					<div class="subsection1">대통령실 &nbsp;&nbsp;|&nbsp;&nbsp; 국회/정당 &nbsp;&nbsp;|&nbsp;&nbsp; 북한 &nbsp;&nbsp;|&nbsp;&nbsp; 행정 &nbsp;&nbsp;|&nbsp;&nbsp; 국방/외교 &nbsp;&nbsp;|&nbsp;&nbsp; 정치일반</div>
+					<div class="subsection2">금융 &nbsp;&nbsp;|&nbsp;&nbsp; 증권  &nbsp;&nbsp;|&nbsp;&nbsp; 산업/재계 &nbsp;&nbsp;|&nbsp;&nbsp; 중기/벤처  &nbsp;&nbsp;|&nbsp;&nbsp; 부동산  &nbsp;&nbsp;|&nbsp;&nbsp; 글로벌 경제&nbsp;&nbsp;|&nbsp;&nbsp; 생활경제 &nbsp;&nbsp;|&nbsp;&nbsp; 경제 일반</div>
+					<div class="subsection3">사건사고 &nbsp;&nbsp;|&nbsp;&nbsp; 교육  &nbsp;&nbsp;|&nbsp;&nbsp; 노동 &nbsp;&nbsp;|&nbsp;&nbsp; 언론 &nbsp;&nbsp;|&nbsp;&nbsp; 환경  &nbsp;&nbsp;|&nbsp;&nbsp; 인권/복지  &nbsp;&nbsp;|&nbsp;&nbsp; 식품/의료  &nbsp;&nbsp;|&nbsp;&nbsp; 지역  &nbsp;&nbsp;|&nbsp;&nbsp; 인물  &nbsp;&nbsp;|&nbsp;&nbsp; 사회 일반</div>
+					<div class="subsection4">건강정보 &nbsp;&nbsp;|&nbsp;&nbsp; 자동차/시승기 &nbsp;&nbsp;|&nbsp;&nbsp; 도로/교통 &nbsp;&nbsp;|&nbsp;&nbsp; 여행/레저 &nbsp;&nbsp;|&nbsp;&nbsp; 여행/레저 &nbsp;&nbsp;|&nbsp;&nbsp; 패션/뷰티  &nbsp;&nbsp;|&nbsp;&nbsp; 공연/전시 &nbsp;&nbsp;|&nbsp;&nbsp; 책 &nbsp;&nbsp;|&nbsp;&nbsp; 종교  &nbsp;&nbsp;|&nbsp;&nbsp; 날씨 &nbsp;&nbsp;|&nbsp;&nbsp; 생활문화  &nbsp;&nbsp;|&nbsp;&nbsp; 일반 </div>
+					<div class="subsection5">아시아/호주  &nbsp;&nbsp;|&nbsp;&nbsp; 미국/중남미  &nbsp;&nbsp;|&nbsp;&nbsp; 유럽  &nbsp;&nbsp;|&nbsp;&nbsp; 중동/아프리카 &nbsp;&nbsp;|&nbsp;&nbsp; 세계 일반</div>
+					<div class="subsection6">모바일  &nbsp;&nbsp;|&nbsp;&nbsp; 인터넷/SNS &nbsp;&nbsp;|&nbsp;&nbsp;  통신/뉴미디어 &nbsp;&nbsp;|&nbsp;&nbsp; IT일반 &nbsp;&nbsp;|&nbsp;&nbsp; 보안/해킹  &nbsp;&nbsp;|&nbsp;&nbsp; 컴퓨터 &nbsp;&nbsp;|&nbsp;&nbsp; 게임/리뷰&nbsp;&nbsp;|&nbsp;&nbsp; 과학 일반</div>
+					<!-- 하위카테고리 끝 -->
+				</div>
+				<!-- 상위 카테고리 끝 -->
+				<!-- 검색 창 틀 시작 -->
+				<div id="site_search">
+					<div class="center">
+						<p>통합검색</p>
+						<form method="post" id="search_frm" action="/news/search.jsp">
+						<div class="search_box">
+							<div class="placeholder_box">
+								<input type="text" title="통합검색" id="search_kyword" name="search_kyword" class="blank_search" placeholder="검색어를 입력해주세요." style="font-family: 'Noto Sans KR', sans-serif;font-size:16px;">
+								<button type="button" class="search_btn"><img src="/news/img/search.png"></img></button>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<!-- 검색 창 틀 끝 -->
+			</div>
+		</div>
+		<!-- head 끝 -->
+		<!-- 내용 -->
+		<div class="wrap_frm">
+			<div class="wrap_cont">
+				<!-- navigation bar -->
+				<div class="navg">
+					<span class="navgtxt"><b>홈 > <%= cate1 %> > <%= cate2 %></b></span>
+				</div>
+				<!-- navigation bar 끝 -->
+				<!-- word cloud -->
+				<!-- word cloud 끝 -->
+				<span class="count"><b> 전체 건수 : 508 건  </b></span>
+				<hr style="width:1244px;margin-bottom: 20px;">
+				<!-- 뉴스 기사  -->
+				<div class="wrap_news">
+					<div class="wrap_news_frm">
+					<%
+					RefinedataDTO dto = new RefinedataDTO();
+					ArrayList<RefinedataVO> list = dto.List(cate1, cate2);
+					for(RefinedataVO vo : list)
+					{
+						%>
+						<!-- 뉴스  -->
+						<div class="news">
+							<div style="cursor:pointer;" onClick="open_pop(<%= vo.getCdno() %>);">
+							<%
+							if(!vo.getCdimg().equals("이미지 없음"))
+							{
+								%>
+								<img src="<%= vo.getCdimg() %>" class="newsimg">
+								<%
+							}else
+							{
+								%>
+								<img src="/news/img/icon.png" class="newsimg">
+								<%
+							}%>
+							<div class="newstxt">
+								<b><%= vo.getCdtitle() %></b>
+								<p class="news_wdate"><%= vo.getCddate() %></p>
+								<div class="newscon" style="border: 2px solid blue">
+								이원욱 "당 지지도 하락…스스로 결단 내려야" 이상민 "본인 누명 벗기 위한 노력에 집중해야"
+								</div>
+								<div class="newswrt" style="border: 2px solid blue"><img src="<%= vo.getCdmedia() %>"> | <%= vo.getCdwriter() %></div>
+							</div>
+							</div>
+						</div>
+						<%
+					}
+					%>
+					</div>
+					<!-- 하위 클라우들 시작 -->
+					<div class="content2_cloud_frm">
+						<div class="1top" style="text-align: left;font-size: 22px;position:relative;left:10px;margin-top: 10px;">오늘의 키워드: <%= cate1 %></div>
+						<div class="1top_wdate" style="margin: 0 atuo;position: absolute;margin-top: 10px;font-size: 16px;left:10px;">2023.09.14(목)</div>
+						<div class="content2_cloud">
+							<div class="cloud_sort">
+								<ul>
+									<li class="person">인물 </li>
+									<li class="region">장소 </li>
+									<li class="agency">기관</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- 하위 클라우들 끝 -->
+					<%
+					for(RefinedataVO vo2 : list)
+					{
+						%>
+						<!-- Modal 바깥 -->
+						<div id="myModal<%= vo2.getCdno() %>" class="modal">
+							<!-- Modal 안쪽 -->
+							<div class="modal-content">
+								<!-- 닫기1 버튼 -->
+								<div style="cursor:pointer;" onClick="close_pop(<%= vo2.getCdno() %>);">
+									<img src="/news/img/close.png" style="width:25px;float:right"></img>
+								</div>
+								<!-- 닫기 1버튼 끝 -->
+								<!-- 뉴스 작성 정보 -->
+								<div>
+									<b style="font-size:20pt;"><img src="<%= vo2.getCdmedia() %>" width="100px"><br></b>
+									<a href="<%= vo2.getCdurl() %>" style="border: 2px solid black; font-size: 14px; padding: 2px;">기사원문</a>
+									<p style="font-size:20pt;"><%= vo2.getCdtitle() %></p>
+									<p> <%= vo2.getCdwriter() %> | <%= vo2.getCddate() %></p>
+								</div>
+								<!-- 뉴스 작성 정보 끝 -->
+								<!-- 뉴스 내용 -->
+								<div>
+									<%= vo2.getCdnote() %>
+								</div>
+								<!-- 뉴스 내용 끝 -->
+								<!-- 워드 클라우드 -->
+								<div class="word_cloud_pop" style="text-align:center;">
+									<b style="font-size:20pt;">워드 클라우드<br></b>
+									<div id="wordcloud<%= vo2.getCdno() %>" style="width: 880px; height: 500px; border: 1px solid black;"></div>
+								</div>
+								<!-- 워드 클라우드 끝 -->
+								<!-- 네트워크 그래프 -->
+								<div class="network_pop" style="text-align:center;">
+									<b style="font-size:20pt;">네트워크 그래프<br></b>
+									<img src="/news/img/networkimg.jpg" style="border:1px solid black;width:640px;height:430px;"></img>
+								</div>
+								<!-- 네트워크 그래프 끝-->
+								<!-- 이전 / 이후 기사글이동 -->
+								<br>
+								<div class="modal_footer">
+									<div style="margin:0 auto;">이전 글 | 이전글이 없습니다.</div>
+									<hr style="width:830px;">
+									<div>다음 글 | 조국 "공산전체주의? 용산전체주의…누가 생경한 단어를 알려주고 있는 듯"</div>
+								</div>
+								<!-- 이전 / 이후 기사글이동 끝 -->
+								<!-- 닫기 버튼 2-->
+								<div style="cursor:pointer;width:880px;height:50px" onClick="close_pop(<%= vo2.getCdno() %>);">
+									<input type="button" value="닫기" style="float:right;margin:25px;width:80px;height:30px">
+								</div>
+								<!-- 닫기 버튼 2 끝 -->
+							</div>
+							<!--Modal 안쪽 끝-->
+						</div>
+					    <!--Modal 바깥 끝-->
+					    <%
+				 	}
+				 	%>
+				</div>
+				<!-- 뉴스 기사 끝-->
+				<!-- 페이징 처리 -->
+				<div class="pagearea">
+					<img src="img/left.png" class="pageleft">
+					<div class="pagenow">1</div>
+					<div class="page">2</div>
+					<div class="page">3</div>
+					<div class="page">4</div>
+					<div class="page">5</div>
+					<img src="img/right.png" class="pageright">
+				</div>
+				<!-- 페이징 처리 끝 -->
+			</div>
+			<!-- 내용 끝-->	
+		</div>		
+		<!-- 위로 올라가기 버튼 -->
+		<div id="upbutton">
+			<a href="#"><img src="img/topbutton.png" title="위로 가기"></a>
+		</div>
+		<!-- 위로 올라가기 버튼 끝 -->
+		<!-- tail -->
+		<div class="tail">
+			<p class="tailnote"><br>Company Info</p>
+			<span class="tailnote2">NewsLab Co.Ltd | 전북 전주시 덕진구 백제대로 572 5층 | T.063)276-2380 | F.063)276-2384</span>
+		</div>	
+		<!-- tail 끝 -->
+	</body>
+</html>

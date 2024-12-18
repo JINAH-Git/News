@@ -1,0 +1,129 @@
+@charset "EUC-KR";
+
+.searchcnt
+{
+	border: solid 1px red;
+	width: 1200px;
+	height: 800px;
+	margin: auto;
+	margin-bottom: 200px;
+}
+
+.typearea
+{
+	border: solid 1px blue;
+	width: 220px;
+	height: 325px;
+}
+
+.totalline
+{
+	border: solid 1px green;
+	width: 90px;
+	height: 30px;
+	display: inline-block;
+	margin: 10px 0px 10px 60px;
+}
+
+.typelist
+{
+	border:solid 1px blue;
+	font-size:20px;
+	margin: 15px 0px 10px 20px;
+}
+
+#intcolor
+{
+	color:red;
+}
+
+.searchnewlist
+{
+	margin:15px 0px 12px 10px;
+}
+
+.td1
+{
+	width: 140px;
+	height: 100px;
+}
+
+.listpic
+{
+	width: 140px;
+	height: 100px;
+	border-radius: 10px;
+}
+
+.td2
+{
+	width: 650px;
+	padding: 0px;
+	border: 0px;
+}
+
+.td2div1
+{
+	width: 635px;
+	height: 30px;
+	position: relative;
+	left: 15px;
+	font-size: 23px;
+}
+
+.td2div2
+{
+	width: 635px;
+	height: 30px;
+	position: relative;
+	left: 15px;
+	font-size: 13px;
+	color: gray;
+}
+
+.td2div3
+{
+	width: 635px;
+	height: 30px;
+	position: relative;
+	left: 15px;
+	top: 5px;
+	font-size: 13px;
+}
+
+.td2div3span1
+{
+	color: lightblue;
+}
+
+.td2div3span2
+{
+	background-color: #EDEDED;
+	border-radius: 5px;
+}
+
+.td2div3span3
+{
+	
+}
+
+.td2div3span4
+{
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/json; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>   
+<%@ page import="news.dto.*" %>
+<%@ page import="news.vo.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.json.simple.JSONArray"%>
+<%@ page import="org.json.simple.JSONObject"%>
+<%
+String no = request.getParameter("no");
+JSONObject data = null;
+JSONArray arr = new JSONArray();
+String json = null;
+
+NetworkgraphDTO nwdto = new NetworkgraphDTO(); 
+ArrayList<NetworkgraphVO> list = nwdto.GetNetworkgraph("1");
+
+for(NetworkgraphVO vo : list)
+{
+	data = new JSONObject();
+	data.put("text",vo.getNoun1());
+	data.put("weight",vo.getNoun2());	
+	arr.add(data);
+}
+
+json = arr.toJSONString();
+out.println(json);
+%>
